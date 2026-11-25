@@ -6,6 +6,7 @@ on:
   workflow_dispatch:
 permissions:
   contents: read
+  actions: read   # deploy-pages lists this run's artifacts
   pages: write
   id-token: write
 concurrency:
