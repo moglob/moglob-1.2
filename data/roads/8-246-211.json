@@ -1,0 +1,40 @@
+{
+ "format": "cell-roads-summary-1",
+ "cell": "8-246-211",
+ "operation": "cell-roads",
+ "version": 1,
+ "release": "2026-11-18.0",
+ "input": {
+  "file": "data/raw/places/cell-8-246-211/overture-roads-2026-11-18.0.ndjson",
+  "sha256": "3786afe53868007cd84fc2ac8b68940c8a9cf0a23265ee7523c60a4acfccb33c"
+ },
+ "rule": "Overture transportation segments of subtype road and class motorway, trunk, primary, secondary, tertiary, unclassified, residential, living_street, service, pedestrian; Douglas-Peucker 2 m; quantised to 1/100000 degree; each in the level-11 cell of its bbox middle (cells of 180 / 2^11 degrees, y from 90 S); the middle must be in the build cell",
+ "credit": "© OpenStreetMap contributors (ODbL 1.0), via Overture Maps Foundation transportation theme",
+ "files": [
+  "11-1973-1688",
+  "11-1974-1688",
+  "11-1975-1688",
+  "11-1975-1689"
+ ],
+ "segments": 389,
+ "points_in": 2169,
+ "points": 1225,
+ "by_class": {
+  "service": 320,
+  "primary": 18,
+  "unclassified": 23,
+  "residential": 21,
+  "tertiary": 7
+ },
+ "km_by_class": {
+  "service": 16,
+  "primary": 17,
+  "unclassified": 11,
+  "residential": 2,
+  "tertiary": 4
+ },
+ "outside_cell": 136,
+ "bytes": 16037,
+ "built": "2026-11-25T15:51:45.957Z",
+ "lines_format": "lines: [class index, name index or -1, x0, y0, dx1, dy1, ...] in 1/q degree (x lon, y lat; deltas after the first point)"
+}
