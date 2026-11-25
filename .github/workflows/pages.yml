@@ -1,4 +1,6 @@
 # Publish this repository's files with GitHub Pages (moglob tile data; plan: https://github.com/danbri/londat/issues/20).
+# Two jobs, as GitHub's starter workflow: build uploads the artifact, deploy runs after it (one job did both and
+# deploy-pages often found "0 artifacts" right after the upload, 2026-11-25).
 name: pages
 on:
   push:
@@ -6,23 +8,19 @@ on:
   workflow_dispatch:
 permissions:
   contents: read
-  actions: read   # deploy-pages lists this run's artifacts
+  actions: read
   pages: write
   id-token: write
 concurrency:
   group: pages
-  cancel-in-progress: true
+  cancel-in-progress: false
 jobs:
-  deploy:
+  build:
     runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deploy.outputs.page_url }}
     steps:
       - uses: actions/checkout@v4
-      # Pages is switched on by hand (Settings > Pages > Source: GitHub Actions), or here when the org secret
-      # MOGLOB_PAGES_TOKEN exists (a fine-grained token, resource owner moglob, Pages and Administration: read and write);
-      # the workflow's own token cannot create a Pages site ("Resource not accessible by integration", 2026-11-25)
+      # Pages is switched on here when the org secret MOGLOB_PAGES_TOKEN exists (a fine-grained token, resource owner
+      # moglob, Pages and Administration: read and write); the workflow's own token cannot create a Pages site
       - uses: actions/configure-pages@v5
         with:
           enablement: ${{ secrets.MOGLOB_PAGES_TOKEN != '' }}
@@ -36,5 +34,12 @@ jobs:
       - uses: actions/upload-pages-artifact@v3
         with:
           path: _site
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deploy.outputs.page_url }}
+    steps:
       - id: deploy
         uses: actions/deploy-pages@v4
