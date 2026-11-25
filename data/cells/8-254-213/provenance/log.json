@@ -1,0 +1,580 @@
+{
+ "about": "Build log of the place cell-8-254-213 (Build cell 8-254-213, kind blocks) by cwplans/tools/build-place-tiles.mjs: what was fetched (URL, date, SHA-256) and each dataflow activity with its input and output hashes. Raw files stay in cwplans/data/raw/places/cell-8-254-213/ (not committed).",
+ "fetches": {
+  "overture-buildings": {
+   "url": "s3://overturemaps-us-west-2/release/2026-11-18.0/theme=buildings/type=building/ (bbox -1.41,59.76,-0.7,60.47; files part-00127-a39ea39c-9cf0-5e5d-b366-03f8db5a879d-c000.zstd.parquet)",
+   "fetched": "2026-11-25T15:29:37.826Z",
+   "bytes": 11976976,
+   "sha256": "de0b90e2d822696e67b0cbba4bb6d60a71ecb7b976fd585bb78617a0dc9e384a",
+   "file": "data/raw/places/cell-8-254-213/overture-buildings-2026-11-18.0.ndjson",
+   "source": "overture-buildings",
+   "request": "DuckDB read_parquet over HTTPS of the 512 files of the release, filter on bbox and: is_underground IS NOT TRUE; columns subtype, class, names.primary, height, num_floors, min_height, roof_shape, has_parts, is_underground; rows ordered by id, one JSON object a line (fetch-overture-theme.py, .ndjson)",
+   "records": 16574,
+   "licence": "ODbL 1.0 (OpenStreetMap-derived records; the record sources list names each source and licence)",
+   "as_fetched": {
+    "note": "the query answer as written by cwplans/tools/fetch-overture-theme.py (raw folder, NDJSON); sha256 above"
+   }
+  },
+  "heights-world-ghsl": {
+   "url": [
+    "https://jeodpp.jrc.ec.europa.eu/ftp/jrc-opendata/GHSL/GHS_BUILT_H_GLOBE_R2023A/GHS_BUILT_H_ANBH_E2018_GLOBE_R2023A_4326_3ss/V1-0/tiles/GHS_BUILT_H_ANBH_E2018_GLOBE_R2023A_4326_3ss_V1_0_R3_C18.zip"
+   ],
+   "fetched": "2026-11-25T15:29:38.202Z",
+   "bytes": 18917,
+   "sha256": "cebd72cf2cdd76b0c72e4f4af2c87e69418c443fe3f5b72f31df69e26eb49743",
+   "file": "docklandia:data/cells/8-254-213/sources/ghsl-built-h.json.gz",
+   "source": "ghsl-built-h",
+   "as_fetched": [
+    {
+     "url": "https://jeodpp.jrc.ec.europa.eu/ftp/jrc-opendata/GHSL/GHS_BUILT_H_GLOBE_R2023A/GHS_BUILT_H_ANBH_E2018_GLOBE_R2023A_4326_3ss/V1-0/tiles/GHS_BUILT_H_ANBH_E2018_GLOBE_R2023A_4326_3ss_V1_0_R3_C18.zip",
+     "member": "GHS_BUILT_H_ANBH_E2018_GLOBE_R2023A_4326_3ss_V1_0_R3_C18.tif",
+     "tile": "R3_C18",
+     "window": [
+      10313,
+      10351,
+      11174,
+      11212
+     ],
+     "bytes": 1587471,
+     "sha256": "15e6fbc32c458c2529d9f51b97772211cf91a97e92a1c4e863875fe4bbd107d3",
+     "member_sha256": "aef138511b6d57e4c7ea30402715c22c5535c12dea60846517316f50d8f26e09"
+    }
+   ],
+   "cells": 741321,
+   "committed": "docklandia:data/cells/8-254-213/sources/ghsl-built-h.json.gz",
+   "licence": "CC BY 4.0 (Commission Decision 2011/833/EU; copyright.txt: \"(c) European Union, 1995-2026\")",
+   "note": "the tile zips stay in the raw folder; the committed crop (gzip JSON) is the input of place-city-heights"
+  }
+ },
+ "activities": [
+  {
+   "activity": "13efcf2a92e90aac",
+   "operation": "place-select-blocks",
+   "version": 2,
+   "skill": "docklands-3d-page",
+   "tool": "tools/build-place-tiles.mjs",
+   "inputs": [
+    {
+     "label": "overture-buildings",
+     "path": "data/raw/places/cell-8-254-213/overture-buildings-2026-11-18.0.ndjson",
+     "sha256": "de0b90e2d822696e67b0cbba4bb6d60a71ecb7b976fd585bb78617a0dc9e384a"
+    },
+    {
+     "label": "boundary",
+     "path": "data/raw/places/cell-8-254-213/work/boundary.json",
+     "sha256": "c80ed1606beb47aae215345308638cc4aa1315258bd7cc690e271d9919d162f1"
+    }
+   ],
+   "params": {
+    "boundary": {
+     "bbox": [
+      -1.40625,
+      59.765625,
+      -0.703125,
+      60.46875
+     ],
+     "name": "quadtree cell 8-254-213",
+     "points": 4
+    },
+    "exclude": [
+     {
+      "id": "docklands",
+      "origin": {
+       "lon": -0.019497988,
+       "lat": 51.504902222,
+       "h": 45.448
+      },
+      "modelFrame": {
+       "a": 0.9994702116731193,
+       "b": 0.02705486218699722,
+       "tx": 0.009070344521249834,
+       "tn": 0.003921958702577293,
+       "ty": 0,
+       "error": {
+        "horizontalMaxM": 0.086,
+        "horizontalRmsM": 0.028,
+        "verticalMaxDropM": 3.08,
+        "againstFitMaxM": 0.03
+       }
+      },
+      "modelBox": {
+       "x0": -5150,
+       "x1": 2350,
+       "z0": -2000,
+       "z1": 3600,
+       "inset_m": 1
+      }
+     }
+    ],
+    "geometrySources": [
+     "OpenStreetMap"
+    ],
+    "licences": [
+     "ODbL-1.0",
+     "CDLA-Permissive-2.0",
+     "CDLA-Permissive-1.0",
+     "CC-BY-4.0",
+     "CC0-1.0"
+    ],
+    "heightLabels": {
+     "Microsoft ML Buildings": "ms"
+    },
+    "extraGeometry": [
+     {
+      "cls": "ms",
+      "dataset": "Microsoft ML Buildings"
+     }
+    ]
+   },
+   "outputs": [
+    {
+     "path": "data/raw/places/cell-8-254-213/work/blocks-select.ndjson.gz",
+     "sha256": "d72651ba41268cf0a37348d39e782da4b55a951ec0fded27ab3226218e9b876e",
+     "bytes": 1479191
+    },
+    {
+     "path": "data/raw/places/cell-8-254-213/work/blocks-footprints.json.gz",
+     "sha256": "ab08c3b0c0a3f75436c1e07fe6f87b084fe131054078b77b153003c9d2260791",
+     "bytes": 833102
+    }
+   ],
+   "ms": 1263,
+   "at": "2026-11-25T15:29:39.643Z",
+   "note": "outputs under data/raw are intermediate (not committed); their hashes fix the next step"
+  },
+  {
+   "activity": "71f281398ba2c7d1",
+   "operation": "place-city-heights",
+   "version": 3,
+   "skill": "docklands-data-curation",
+   "tool": "tools/build-place-tiles.mjs",
+   "inputs": [
+    {
+     "label": "selected",
+     "path": "data/raw/places/cell-8-254-213/work/blocks-select.ndjson.gz",
+     "sha256": "d72651ba41268cf0a37348d39e782da4b55a951ec0fded27ab3226218e9b876e"
+    },
+    {
+     "label": "footprint-heights",
+     "path": "data/raw/places/cell-8-254-213/work/blocks-footprints.json.gz",
+     "sha256": "ab08c3b0c0a3f75436c1e07fe6f87b084fe131054078b77b153003c9d2260791"
+    },
+    {
+     "label": "raster-heights",
+     "path": "docklandia:data/cells/8-254-213/sources/ghsl-built-h.json.gz",
+     "sha256": "cebd72cf2cdd76b0c72e4f4af2c87e69418c443fe3f5b72f31df69e26eb49743"
+    }
+   ],
+   "params": {
+    "storey_m": 3,
+    "national_storey_m": 3,
+    "default_m": 7,
+    "default_small_m": 3,
+    "raster_min_m": 3,
+    "roof_rule": null,
+    "pitch_deg": 30,
+    "max_roof_m": 8,
+    "footprints": [
+     "ms"
+    ],
+    "rule": "as place-heights over the selected buildings: OSM height > OSM building:levels x storey > Overture height > Overture num_floors x storey (non-OSM records, open licence, not Microsoft) > Microsoft ML Buildings height (via Overture; footprint match: a centroid inside the other outline, area ratio >= 0.5) > small kinds 3 m > GHSL cell under the centroid (min 3 m) > default; no roofs (blocks)"
+   },
+   "outputs": [
+    {
+     "path": "data/raw/places/cell-8-254-213/work/blocks-heights.json.gz",
+     "sha256": "a0a5e52040184c07251f2b019d5c4e18fa40f5bd0d3d26d8c4a3971ff67056ba",
+     "bytes": 385351
+    }
+   ],
+   "ms": 286,
+   "at": "2026-11-25T15:29:40.061Z",
+   "note": "outputs under data/raw are intermediate (not committed); their hashes fix the next step"
+  },
+  {
+   "activity": "c3ba9b45c9e7b3a7",
+   "operation": "place-blocks",
+   "version": 7,
+   "skill": "docklands-3d-page",
+   "tool": "tools/build-place-tiles.mjs",
+   "inputs": [
+    {
+     "label": "selected",
+     "path": "data/raw/places/cell-8-254-213/work/blocks-select.ndjson.gz",
+     "sha256": "d72651ba41268cf0a37348d39e782da4b55a951ec0fded27ab3226218e9b876e"
+    },
+    {
+     "label": "heights",
+     "path": "data/raw/places/cell-8-254-213/work/blocks-heights.json.gz",
+     "sha256": "a0a5e52040184c07251f2b019d5c4e18fa40f5bd0d3d26d8c4a3971ff67056ba"
+    },
+    {
+     "label": "world-base heights",
+     "path": "docklands/data/world-basedem (0 tiles over the query box; sha256 of the list of path and sha256 of each)",
+     "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+     "label": "geoid",
+     "path": "docklands/data/world/geoid-egm96-1deg.png",
+     "sha256": "4e9eb4b3ac040dd6276ba74310a405fab7d5c9955c005c8f84a49103318c26ca"
+    },
+    {
+     "label": "world terrain texture",
+     "path": "docklands/data/world/terrain-4096x2048.png",
+     "sha256": "c98bbf1ffc2ac9db5fd796f1bee160f22561b032b691d938195243624febbb5b"
+    }
+   ],
+   "params": {
+    "top": 10,
+    "leaf": 13,
+    "levels": {
+     "10": {
+      "tall_m": 60,
+      "big_m2": 20000,
+      "merge_m": 400,
+      "err_m": 1680
+     },
+     "11": {
+      "tall_m": 40,
+      "big_m2": 8000,
+      "merge_m": 200,
+      "err_m": 840
+     },
+     "12": {
+      "tall_m": 25,
+      "big_m2": 3000,
+      "merge_m": 100,
+      "err_m": 420
+     }
+    },
+    "min_area_m2": 25,
+    "simplify_m": 2.5,
+    "box_fill": 0.85,
+    "outline_min_m2": 300,
+    "drop_m": 3,
+    "named_min_m2": 1500,
+    "named_min_h_m": 20,
+    "colour": "#d6cbb6",
+    "version_label": "cell-8-254-213-2",
+    "extent_box": [
+     -1.41,
+     59.76,
+     -0.7,
+     60.47
+    ],
+    "leaf_boxes": "compact",
+    "leaf_outlines": true,
+    "layout": "cwplans-boxes-1",
+    "full_share": 0.5,
+    "grid_n": 17,
+    "leaf_within_m": 13000,
+    "far": {
+     "gap_m": 5,
+     "fill_min": 0.7,
+     "h_rel": 0.35,
+     "h_abs_m": 3,
+     "box_fill": 0.7,
+     "simplify_m": 4,
+     "min_m2": {
+      "10": 4870,
+      "11": 1220,
+      "12": 307
+     }
+    },
+    "sparse_leaf_n": 2000,
+    "credit_per_set": true,
+    "classes": [
+     "OpenStreetMap (via Overture)",
+     "merged buildings (one box a square, turned to the grain of its buildings: the summed footprint, the area-weighted mean height)",
+     "OpenStreetMap (via Overture)",
+     "Microsoft ML Buildings (via Overture)"
+    ],
+    "class_index": {
+     "ms": 3
+    },
+    "credit": "© OpenStreetMap contributors (ODbL 1.0); Buildings: OpenStreetMap data via Overture Maps © Overture Maps Foundation (ODbL 1.0); Some city buildings: Microsoft ML Buildings via Overture Maps © Microsoft (ODbL 1.0); Building heights and floors from Overture Maps buildings © Overture Maps Foundation (ODbL 1.0; includes data © Microsoft, © OpenStreetMap contributors and others per record); Building heights from Microsoft Global ML Building Footprints © Microsoft (ODbL 1.0); Building heights (where OSM has none) from GHS-BUILT-H R2023A © European Union, 1995-2026, JRC (CC BY 4.0); Ground: Copernicus DEM GLO-90 © DLR e.V. 2010-2014 and © Airbus Defence and Space GmbH 2014-2018, provided under COPERNICUS by the European Union and ESA (the globe's world-base heights)"
+   },
+   "outputs": [
+    {
+     "path": "docklandia:data/cells/8-254-213/tiles/10-1016-852.glb",
+     "sha256": "954f50af4390b8ee65fc87acf3c3a9d98d91cf62d1b249f1b872d5e013f20d0c",
+     "bytes": 26624
+    },
+    {
+     "path": "docklandia:data/cells/8-254-213/tiles/10-1016-853.glb",
+     "sha256": "0b0fd54890751a3dd0bf82c009a76fcf776d153dc7436cfe0102c6f45849e8a8",
+     "bytes": 32448
+    },
+    {
+     "path": "docklandia:data/cells/8-254-213/tiles/10-1016-854.glb",
+     "sha256": "a7a2c36e439231bead803680bfbdae82485891c54de714ee57865cbc51b83393",
+     "bytes": 276
+    },
+    {
+     "path": "docklandia:data/cells/8-254-213/tiles/11-2032-1708.glb",
+     "sha256": "2aa9a18666b0cae87445e32816e4f04f9919fa85e62efe2c30f8669565d8a289",
+     "bytes": 1876
+    },
+    {
+     "path": "docklandia:data/cells/8-254-213/tiles/11-2032-1709.glb",
+     "sha256": "d3b2ef98fd84b2d5283f69a34a368013dff732da8bd6d497746485f97b2d39bb",
+     "bytes": 8852
+    },
+    {
+     "path": "docklandia:data/cells/8-254-213/tiles/11-2033-1708.glb",
+     "sha256": "815b19ec13dee5d2f754285c59bca9597dd0f6fa4c8794a912ee0f3d62f469e8",
+     "bytes": 30668
+    },
+    {
+     "path": "docklandia:data/cells/8-254-213/tiles/11-2033-1709.glb",
+     "sha256": "1910e8fafb5aa786abd74a3aaebe31681bdf30a8141a4ae4a73177f627157c99",
+     "bytes": 10188
+    },
+    {
+     "path": "docklandia:data/cells/8-254-213/tiles/10-1016-855.glb",
+     "sha256": "7e6c1218cec5419604b746a86931df07cf29d8c0e569c81651c11736f72c9b0e",
+     "bytes": 53012
+    },
+    {
+     "path": "docklandia:data/cells/8-254-213/tiles/10-1017-853.glb",
+     "sha256": "3853c2ab72b16fabe47cd192d6689cda1e3c4935065b1fe943c8e8064c24f9cd",
+     "bytes": 15424
+    },
+    {
+     "path": "docklandia:data/cells/8-254-213/tiles/10-1017-854.glb",
+     "sha256": "b2cfd34bf42c203030b095df74a01811bb4e9f4c299db8aef505ce5d09b31cfc",
+     "bytes": 3212
+    },
+    {
+     "path": "docklandia:data/cells/8-254-213/tiles/11-2034-1708.glb",
+     "sha256": "2f2ef480f104dcc5ea6c6559f40e897797c40e1fd6778e023abdce43b600aae1",
+     "bytes": 3732
+    },
+    {
+     "path": "docklandia:data/cells/8-254-213/tiles/12-4068-3416.glb",
+     "sha256": "a806a7a044072ee3c91e411c5cd0cb86b06f40dd8f2bc2940dc00354ef7acebc",
+     "bytes": 7200
+    },
+    {
+     "path": "docklandia:data/cells/8-254-213/tiles/12-4068-3417.glb",
+     "sha256": "231c9ebc2aa159c259d56eb774af4a4c851fd86a8656bdc2cfed4ec5e21d83a8",
+     "bytes": 8532
+    },
+    {
+     "path": "docklandia:data/cells/8-254-213/tiles/12-4069-3416.glb",
+     "sha256": "707593d4884aa25afdab3b706d23b1e80eb2aa203c304dc7464d3b0c300b7186",
+     "bytes": 9172
+    },
+    {
+     "path": "docklandia:data/cells/8-254-213/tiles/13-8138-6832.glb",
+     "sha256": "551a3060350055b0176054c2feb15af381592924a0a5c8255c1fd0fdc6921334",
+     "bytes": 1816
+    },
+    {
+     "path": "docklandia:data/cells/8-254-213/tiles/13-8138-6833.glb",
+     "sha256": "8928b57bf64e5e677032e4225627c566271ff9d8ecabdbef1c0f0aefc157c515",
+     "bytes": 26380
+    },
+    {
+     "path": "docklandia:data/cells/8-254-213/tiles/13-8139-6832.glb",
+     "sha256": "8c7502b025343a79dd470e0fc1e5716ea169b43a6b823f33c2eeddbb09d5f5e1",
+     "bytes": 3252
+    },
+    {
+     "path": "docklandia:data/cells/8-254-213/tiles/13-8139-6833.glb",
+     "sha256": "8d9141a382aa7ae481c327a6c44e329cda1cf467f3f1327a84fbf239d8ec9654",
+     "bytes": 53640
+    },
+    {
+     "path": "docklandia:data/cells/8-254-213/tiles/12-4069-3417.glb",
+     "sha256": "3f58bb15c6edcc53f1ead7891b44713e90a93c6b9a205e22dbb02119071dcd0f",
+     "bytes": 22220
+    },
+    {
+     "path": "docklandia:data/cells/8-254-213/tiles/11-2034-1709.glb",
+     "sha256": "95a0b1282734af98530dfc3f4c50e13e1083183dd3b583bb3b0e9b4bfd7ff885",
+     "bytes": 8680
+    },
+    {
+     "path": "docklandia:data/cells/8-254-213/tiles/11-2035-1708.glb",
+     "sha256": "8798f64bddf5a02bcd5e056c59d572e773886e2c9433768e6ad22f3051c91857",
+     "bytes": 24264
+    },
+    {
+     "path": "docklandia:data/cells/8-254-213/tiles/11-2035-1709.glb",
+     "sha256": "7e72dd561faeb8ada940bfeb4678f1744f5fe4d4c076ac9564cb78b539e5f9f7",
+     "bytes": 2040
+    },
+    {
+     "path": "docklandia:data/cells/8-254-213/tiles/10-1017-855.glb",
+     "sha256": "491ea1667b8dc89456bc8b687601c6c3e9cc2de188ba6eb7d18a6bc205ef4c9c",
+     "bytes": 10356
+    },
+    {
+     "path": "docklandia:data/cells/8-254-213/tiles/10-1018-854.glb",
+     "sha256": "3739f178910972e5d604175d5e2de42e8c9ce7234abe8fdb2ab4e31ed36d0f0e",
+     "bytes": 1812
+    },
+    {
+     "path": "docklandia:data/cells/8-254-213/tiles/10-1018-855.glb",
+     "sha256": "63ab3419c9bbb4081eff94cfb3312c8c2d6c5458d37e4b5f3b1d6082cea0c114",
+     "bytes": 15828
+    },
+    {
+     "path": "docklandia:data/cells/8-254-213/tiles/10-1019-855.glb",
+     "sha256": "48bc854dd2df717d0bc2602919340e63daeaa7c986f4ebdcfe1f626a9769247a",
+     "bytes": 2700
+    },
+    {
+     "path": "docklandia:data/cells/8-254-213/tileset.json",
+     "sha256": "5fc032a33890d7547312ec3ec10ba29f361700009023fc05b06108bc5e3679d2",
+     "bytes": 11758
+    },
+    {
+     "path": "docklandia:data/cells/8-254-213/features.json",
+     "sha256": "7ebbce9d1e5935cf550422b18e65f6e324f51ef19d492a3d6fb95cc86587565c",
+     "bytes": 8416
+    }
+   ],
+   "ms": 1001,
+   "at": "2026-11-25T15:29:41.083Z"
+  }
+ ],
+ "selection": {
+  "records": 16574,
+  "OSM buildings selected": 9847,
+  "height from Microsoft ML Buildings (ODbL-1.0) kept as ms": 10032,
+  "OSM buildings outside the boundary": 44,
+  "ms buildings outside the boundary": 53,
+  "ms buildings selected (no OSM building there)": 6628,
+  "ms buildings dropped (overlap an OSM building)": 2
+ },
+ "height_sources": {
+  "osm-height": 19,
+  "osm-levels": 1051,
+  "national": 0,
+  "ms": 9703,
+  "default-small": 202,
+  "ghsl": 4831,
+  "default": 669,
+  "levels-vs-national-2plus": 0,
+  "national-zero-floors": 0
+ },
+ "footprint_matches": {
+  "ms": {
+   "rows": 10032,
+   "matched": 9892,
+   "matched_osm_had_height": 189
+  }
+ },
+ "tiers": {
+  "level 10": {
+   "tiles": 10,
+   "bytes": 161692,
+   "triangles": 73911,
+   "boxes": 0,
+   "outlines": 198,
+   "named": 0,
+   "merged": 4,
+   "merged_buildings": 4,
+   "building_boxes": 6823,
+   "mass_boxes": 4,
+   "by_class": {
+    "ms": 2585,
+    "osm": 4437
+   },
+   "far_outlines": 1
+  },
+  "level 11": {
+   "tiles": 8,
+   "bytes": 90300,
+   "triangles": 33987,
+   "boxes": 0,
+   "outlines": 104,
+   "named": 3,
+   "merged": 68,
+   "merged_buildings": 85,
+   "building_boxes": 3043,
+   "mass_boxes": 68,
+   "by_class": {
+    "osm": 2046,
+    "ms": 1105
+   },
+   "far_outlines": 1
+  },
+  "level 12": {
+   "tiles": 4,
+   "bytes": 47124,
+   "triangles": 14687,
+   "boxes": 3,
+   "outlines": 42,
+   "named": 3,
+   "merged": 216,
+   "merged_buildings": 287,
+   "building_boxes": 1096,
+   "mass_boxes": 216,
+   "by_class": {
+    "osm": 837,
+    "ms": 311
+   },
+   "far_outlines": 4
+  },
+  "level 13": {
+   "tiles": 4,
+   "bytes": 85088,
+   "triangles": 22797,
+   "boxes": 0,
+   "outlines": 113,
+   "named": 12,
+   "merged": 0,
+   "merged_buildings": 0,
+   "building_boxes": 1921,
+   "mass_boxes": 0,
+   "by_class": {
+    "osm": 1848,
+    "ms": 198
+   },
+   "far_outlines": 0
+  }
+ },
+ "blocks": {
+  "buildings": 13358,
+  "named": 18,
+  "by_class": {
+   "osm": 9159,
+   "ms": 4199
+  },
+  "leaf_boxes": "compact"
+ },
+ "block_geometry": {
+  "osm": {
+   "label": "OpenStreetMap (via Overture)",
+   "source": "osm",
+   "switch": null,
+   "selected": 9847,
+   "dropped_overlap_osm": null,
+   "drawn": 9159,
+   "heights": {
+    "ms": 4201,
+    "ghsl": 4058,
+    "osm-levels": 1051,
+    "osm-height": 19,
+    "default": 316,
+    "default-small": 202
+   }
+  },
+  "ms": {
+   "label": "Microsoft ML Buildings (via Overture)",
+   "source": "overture-ms-geometry",
+   "switch": "overture-ms-geometry",
+   "selected": 6628,
+   "dropped_overlap_osm": 2,
+   "drawn": 4199,
+   "heights": {
+    "ms": 5502,
+    "ghsl": 773,
+    "default": 353
+   }
+  }
+ },
+ "fault": "F55 (curation skill fault register): buildings with no height in OSM; counted, not patched per record"
+}
