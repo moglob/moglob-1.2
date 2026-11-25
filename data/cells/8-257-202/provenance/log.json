@@ -1,0 +1,2949 @@
+{
+ "about": "Build log of the place cell-8-257-202 (Build cell 8-257-202, kind blocks) by cwplans/tools/build-place-tiles.mjs: what was fetched (URL, date, SHA-256) and each dataflow activity with its input and output hashes. Raw files stay in cwplans/data/raw/places/cell-8-257-202/ (not committed).",
+ "fetches": {
+  "overture-buildings": {
+   "url": "s3://overturemaps-us-west-2/release/2026-11-18.0/theme=buildings/type=building/ (bbox 0.7,52.03,1.41,52.74; files part-00126-c47ebd74-544d-5551-a1a0-d3fe19c527fa-c000.zstd.parquet part-00127-a39ea39c-9cf0-5e5d-b366-03f8db5a879d-c000.zstd.parquet)",
+   "fetched": "2026-11-25T14:22:37.129Z",
+   "bytes": 333843035,
+   "sha256": "4c1f49506c766e0403b118c53c1f7dbdc19fcf02f83b38ba47da569e78968136",
+   "file": "data/raw/places/cell-8-257-202/overture-buildings-2026-11-18.0.ndjson",
+   "source": "overture-buildings",
+   "request": "DuckDB read_parquet over HTTPS of the 512 files of the release, filter on bbox and: is_underground IS NOT TRUE; columns subtype, class, names.primary, height, num_floors, min_height, roof_shape, has_parts, is_underground; rows ordered by id, one JSON object a line (fetch-overture-theme.py, .ndjson)",
+   "records": 470413,
+   "licence": "ODbL 1.0 (OpenStreetMap-derived records; the record sources list names each source and licence)",
+   "as_fetched": {
+    "note": "the query answer as written by cwplans/tools/fetch-overture-theme.py (raw folder, NDJSON); sha256 above"
+   }
+  },
+  "heights-world-ghsl": {
+   "url": [
+    "https://jeodpp.jrc.ec.europa.eu/ftp/jrc-opendata/GHSL/GHS_BUILT_H_GLOBE_R2023A/GHS_BUILT_H_ANBH_E2018_GLOBE_R2023A_4326_3ss/V1-0/tiles/GHS_BUILT_H_ANBH_E2018_GLOBE_R2023A_4326_3ss_V1_0_R4_C19.zip"
+   ],
+   "fetched": "2026-11-25T14:22:39.180Z",
+   "bytes": 193057,
+   "sha256": "7107eaef65a23d0d1589d3cc2a2e1eb5244e0d5c645a0370334d2b7f293664be",
+   "file": "docklandia:data/cells/8-257-202/sources/ghsl-built-h.json.gz",
+   "source": "ghsl-built-h",
+   "as_fetched": [
+    {
+     "url": "https://jeodpp.jrc.ec.europa.eu/ftp/jrc-opendata/GHSL/GHS_BUILT_H_GLOBE_R2023A/GHS_BUILT_H_ANBH_E2018_GLOBE_R2023A_4326_3ss/V1-0/tiles/GHS_BUILT_H_ANBH_E2018_GLOBE_R2023A_4326_3ss_V1_0_R4_C19.zip",
+     "member": "GHS_BUILT_H_ANBH_E2018_GLOBE_R2023A_4326_3ss_V1_0_R4_C19.tif",
+     "tile": "R4_C19",
+     "window": [
+      845,
+      7627,
+      1706,
+      8488
+     ],
+     "bytes": 66387983,
+     "sha256": "3b3ba712680c1311f0675fb5503e6176aa16711419ea51b151f2de2602fc6dae",
+     "member_sha256": "a9f10170d57aec2db76029210d4e85400c2d84ae9ab6a644be5270c677e62ef7"
+    }
+   ],
+   "cells": 741321,
+   "committed": "docklandia:data/cells/8-257-202/sources/ghsl-built-h.json.gz",
+   "licence": "CC BY 4.0 (Commission Decision 2011/833/EU; copyright.txt: \"(c) European Union, 1995-2026\")",
+   "note": "the tile zips stay in the raw folder; the committed crop (gzip JSON) is the input of place-city-heights"
+  }
+ },
+ "activities": [
+  {
+   "activity": "eef951646ceae1ff",
+   "operation": "place-select-blocks",
+   "version": 2,
+   "skill": "docklands-3d-page",
+   "tool": "tools/build-place-tiles.mjs",
+   "inputs": [
+    {
+     "label": "overture-buildings",
+     "path": "data/raw/places/cell-8-257-202/overture-buildings-2026-11-18.0.ndjson",
+     "sha256": "4c1f49506c766e0403b118c53c1f7dbdc19fcf02f83b38ba47da569e78968136"
+    },
+    {
+     "label": "boundary",
+     "path": "data/raw/places/cell-8-257-202/work/boundary.json",
+     "sha256": "b96961ac7e1f52eb0e5eaec68905b33c110ef2849dba654dab6375574c2002fd"
+    }
+   ],
+   "params": {
+    "boundary": {
+     "bbox": [
+      0.703125,
+      52.03125,
+      1.40625,
+      52.734375
+     ],
+     "name": "quadtree cell 8-257-202",
+     "points": 4
+    },
+    "exclude": [
+     {
+      "id": "docklands",
+      "origin": {
+       "lon": -0.019497988,
+       "lat": 51.504902222,
+       "h": 45.448
+      },
+      "modelFrame": {
+       "a": 0.9994702116731193,
+       "b": 0.02705486218699722,
+       "tx": 0.009070344521249834,
+       "tn": 0.003921958702577293,
+       "ty": 0,
+       "error": {
+        "horizontalMaxM": 0.086,
+        "horizontalRmsM": 0.028,
+        "verticalMaxDropM": 3.08,
+        "againstFitMaxM": 0.03
+       }
+      },
+      "modelBox": {
+       "x0": -5150,
+       "x1": 2350,
+       "z0": -2000,
+       "z1": 3600,
+       "inset_m": 1
+      }
+     }
+    ],
+    "geometrySources": [
+     "OpenStreetMap"
+    ],
+    "licences": [
+     "ODbL-1.0",
+     "CDLA-Permissive-2.0",
+     "CDLA-Permissive-1.0",
+     "CC-BY-4.0",
+     "CC0-1.0"
+    ],
+    "heightLabels": {
+     "Microsoft ML Buildings": "ms"
+    },
+    "extraGeometry": [
+     {
+      "cls": "ms",
+      "dataset": "Microsoft ML Buildings"
+     }
+    ]
+   },
+   "outputs": [
+    {
+     "path": "data/raw/places/cell-8-257-202/work/blocks-select.ndjson.gz",
+     "sha256": "be5f46524f440576a7bfad5e1078b9e1f8cab74cab9a395296a3408981e1695c",
+     "bytes": 41457290
+    },
+    {
+     "path": "data/raw/places/cell-8-257-202/work/blocks-footprints.json.gz",
+     "sha256": "ea0df12b1ab8bdfe0c3c5b7585ab11703f98f72555eb882fc8dfa55bd60053f5",
+     "bytes": 16871983
+    }
+   ],
+   "ms": 35706,
+   "at": "2026-11-25T14:23:15.500Z",
+   "note": "outputs under data/raw are intermediate (not committed); their hashes fix the next step"
+  },
+  {
+   "activity": "4889336436b729f8",
+   "operation": "place-city-heights",
+   "version": 3,
+   "skill": "docklands-data-curation",
+   "tool": "tools/build-place-tiles.mjs",
+   "inputs": [
+    {
+     "label": "selected",
+     "path": "data/raw/places/cell-8-257-202/work/blocks-select.ndjson.gz",
+     "sha256": "be5f46524f440576a7bfad5e1078b9e1f8cab74cab9a395296a3408981e1695c"
+    },
+    {
+     "label": "footprint-heights",
+     "path": "data/raw/places/cell-8-257-202/work/blocks-footprints.json.gz",
+     "sha256": "ea0df12b1ab8bdfe0c3c5b7585ab11703f98f72555eb882fc8dfa55bd60053f5"
+    },
+    {
+     "label": "raster-heights",
+     "path": "docklandia:data/cells/8-257-202/sources/ghsl-built-h.json.gz",
+     "sha256": "7107eaef65a23d0d1589d3cc2a2e1eb5244e0d5c645a0370334d2b7f293664be"
+    }
+   ],
+   "params": {
+    "storey_m": 3,
+    "national_storey_m": 3,
+    "default_m": 7,
+    "default_small_m": 3,
+    "raster_min_m": 3,
+    "roof_rule": null,
+    "pitch_deg": 30,
+    "max_roof_m": 8,
+    "footprints": [
+     "ms"
+    ],
+    "rule": "as place-heights over the selected buildings: OSM height > OSM building:levels x storey > Overture height > Overture num_floors x storey (non-OSM records, open licence, not Microsoft) > Microsoft ML Buildings height (via Overture; footprint match: a centroid inside the other outline, area ratio >= 0.5) > small kinds 3 m > GHSL cell under the centroid (min 3 m) > default; no roofs (blocks)"
+   },
+   "outputs": [
+    {
+     "path": "data/raw/places/cell-8-257-202/work/blocks-heights.json.gz",
+     "sha256": "3a7e95c8406eeccc01396bcd434622e5412b2889533dc6bc02753fc2dff8a3a5",
+     "bytes": 10817166
+    }
+   ],
+   "ms": 12406,
+   "at": "2026-11-25T14:23:31.037Z",
+   "note": "outputs under data/raw are intermediate (not committed); their hashes fix the next step"
+  },
+  {
+   "activity": "64298fbc975d1195",
+   "operation": "place-blocks",
+   "version": 7,
+   "skill": "docklands-3d-page",
+   "tool": "tools/build-place-tiles.mjs",
+   "inputs": [
+    {
+     "label": "selected",
+     "path": "data/raw/places/cell-8-257-202/work/blocks-select.ndjson.gz",
+     "sha256": "be5f46524f440576a7bfad5e1078b9e1f8cab74cab9a395296a3408981e1695c"
+    },
+    {
+     "label": "heights",
+     "path": "data/raw/places/cell-8-257-202/work/blocks-heights.json.gz",
+     "sha256": "3a7e95c8406eeccc01396bcd434622e5412b2889533dc6bc02753fc2dff8a3a5"
+    },
+    {
+     "label": "world-base heights",
+     "path": "docklands/data/world-basedem (18 tiles over the query box; sha256 of the list of path and sha256 of each)",
+     "sha256": "f4b7e084ced0be5cd9b45e4a20f18d0d710e3577dadfb1b48416739af8e2bdd3"
+    },
+    {
+     "label": "geoid",
+     "path": "docklands/data/world/geoid-egm96-1deg.png",
+     "sha256": "4e9eb4b3ac040dd6276ba74310a405fab7d5c9955c005c8f84a49103318c26ca"
+    },
+    {
+     "label": "world terrain texture",
+     "path": "docklands/data/world/terrain-4096x2048.png",
+     "sha256": "c98bbf1ffc2ac9db5fd796f1bee160f22561b032b691d938195243624febbb5b"
+    }
+   ],
+   "params": {
+    "top": 10,
+    "leaf": 13,
+    "levels": {
+     "10": {
+      "tall_m": 60,
+      "big_m2": 20000,
+      "merge_m": 400,
+      "err_m": 1680
+     },
+     "11": {
+      "tall_m": 40,
+      "big_m2": 8000,
+      "merge_m": 200,
+      "err_m": 840
+     },
+     "12": {
+      "tall_m": 25,
+      "big_m2": 3000,
+      "merge_m": 100,
+      "err_m": 420
+     }
+    },
+    "min_area_m2": 25,
+    "simplify_m": 2.5,
+    "box_fill": 0.85,
+    "outline_min_m2": 300,
+    "drop_m": 3,
+    "named_min_m2": 1500,
+    "named_min_h_m": 20,
+    "colour": "#d6cbb6",
+    "version_label": "cell-8-257-202-2",
+    "extent_box": [
+     0.7,
+     52.03,
+     1.41,
+     52.74
+    ],
+    "leaf_boxes": "compact",
+    "leaf_outlines": true,
+    "layout": "cwplans-boxes-1",
+    "full_share": 0.5,
+    "grid_n": 17,
+    "leaf_within_m": 13000,
+    "far": {
+     "gap_m": 5,
+     "fill_min": 0.7,
+     "h_rel": 0.35,
+     "h_abs_m": 3,
+     "box_fill": 0.7,
+     "simplify_m": 4,
+     "min_m2": {
+      "10": 4870,
+      "11": 1220,
+      "12": 307
+     }
+    },
+    "sparse_leaf_n": 2000,
+    "credit_per_set": true,
+    "classes": [
+     "OpenStreetMap (via Overture)",
+     "merged buildings (one box a square, turned to the grain of its buildings: the summed footprint, the area-weighted mean height)",
+     "OpenStreetMap (via Overture)",
+     "Microsoft ML Buildings (via Overture)"
+    ],
+    "class_index": {
+     "ms": 3
+    },
+    "credit": "© OpenStreetMap contributors (ODbL 1.0); Buildings: OpenStreetMap data via Overture Maps © Overture Maps Foundation (ODbL 1.0); Some city buildings: Microsoft ML Buildings via Overture Maps © Microsoft (ODbL 1.0); Building heights and floors from Overture Maps buildings © Overture Maps Foundation (ODbL 1.0; includes data © Microsoft, © OpenStreetMap contributors and others per record); Building heights from Microsoft Global ML Building Footprints © Microsoft (ODbL 1.0); Building heights (where OSM has none) from GHS-BUILT-H R2023A © European Union, 1995-2026, JRC (CC BY 4.0); Ground: Copernicus DEM GLO-90 © DLR e.V. 2010-2014 and © Airbus Defence and Space GmbH 2014-2018, provided under COPERNICUS by the European Union and ESA (the globe's world-base heights)"
+   },
+   "outputs": [
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/10-1028-808.glb",
+     "sha256": "2a7c0bae80b92aa10cef961635e21a4ae01a84e4e4b15f013ac9329b8bd20cf0",
+     "bytes": 1880
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/11-2056-1616.glb",
+     "sha256": "b9883ac3aa5b6d466bac1e6a683e4c497122a880d94c682a8e83ceadeceb505e",
+     "bytes": 5964
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/12-4112-3232.glb",
+     "sha256": "4ebde7b97af833c0986c85bd87546893ede104ddd5b3f62b3aa0dff5f4e96d54",
+     "bytes": 10240
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/13-8224-6464.glb",
+     "sha256": "21bdbb0efdcd6f10e5de965a5701259dfe067d185d3012621623e5104fd00692",
+     "bytes": 25136
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/13-8224-6465.glb",
+     "sha256": "d384c904d0e3fc6fee6876ca5b0001e1ff16beb2d1d4df3b34523ee1da8d65ba",
+     "bytes": 18196
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/13-8225-6464.glb",
+     "sha256": "6b1ff99d0830e257047223afe12bac13af6cc929fbe8132d354161e138a671c4",
+     "bytes": 89036
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/13-8225-6465.glb",
+     "sha256": "35b0b998a57f19d8738baafdbc5f06378e7a4f2d5faaf2d0a49319df7b7f08ad",
+     "bytes": 6816
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/12-4112-3233.glb",
+     "sha256": "efced388dbcad938c53d6ce9880b5b51bebc75706afa6021e335bccd74df45ed",
+     "bytes": 36228
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/12-4113-3232.glb",
+     "sha256": "7f5375c1953b0599a70d25de450b1a322e76d229c30914f4d6c1fbcbe4fddb7c",
+     "bytes": 7024
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/13-8226-6464.glb",
+     "sha256": "f539952281fc8f0d20d923d4669e4383480080e895634971c0bce191eeb933b0",
+     "bytes": 33840
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/13-8226-6465.glb",
+     "sha256": "bec482590a7ef0e269864f248e8be2f56bee7e6a393c1bf5627ff535e18e2709",
+     "bytes": 14584
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/13-8227-6464.glb",
+     "sha256": "295e90af98afed71012e27350d11159eea7b07814f29194e67b609694cdf09d9",
+     "bytes": 8788
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/13-8227-6465.glb",
+     "sha256": "81ab84b8111919e27ff029443678a694b4476f2e4b9fdb6b52c8a1a434ecfdef",
+     "bytes": 15660
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/12-4113-3233.glb",
+     "sha256": "ac04360e5882f206b38d23031631d95640552452b500a6bb0357347cbc3d5f18",
+     "bytes": 8644
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/11-2056-1617.glb",
+     "sha256": "d04318ab995db8dc8cb65f23a867aa3c7adf232d15eecb9668f965dc6ad72363",
+     "bytes": 1928
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/12-4112-3234.glb",
+     "sha256": "2358225a10230f97e8d710232ae4afa1acdd39ae7ee87137cfc3157c85b0ab95",
+     "bytes": 23860
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/12-4112-3235.glb",
+     "sha256": "f927bcae373d58929b3d3b87fdf713b74ee9379ec8692e5a247ff23a8bcc01d5",
+     "bytes": 15344
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/12-4113-3234.glb",
+     "sha256": "479e9ae52861652d29cfa5ebd23bfb7106b49375615e0c3658068c6d30e70f98",
+     "bytes": 14596
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/12-4113-3235.glb",
+     "sha256": "1b0a9d915b6658f17441d688784f621e653a6a68e57d845e58f2d197c3c61eea",
+     "bytes": 25364
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/11-2057-1616.glb",
+     "sha256": "102d8f19b2e99828d2e4be8f224c0c0303437e1bdf6ae64b3becfd6a125d526f",
+     "bytes": 1872
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/12-4114-3232.glb",
+     "sha256": "e4aceada3270d60dc53f1659b96f92a7f5cb4f4f30675cf6bba1affd65f2f194",
+     "bytes": 18204
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/12-4114-3233.glb",
+     "sha256": "b9c1f8e3bbefb85479c883d304bc93223e00ee5e29c3f764f32e3fc036b985e1",
+     "bytes": 31332
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/12-4115-3232.glb",
+     "sha256": "f6c4ba41165ad549b11c42a5c6f727f9e1fed54445adb71186f859bb26b91490",
+     "bytes": 18732
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/12-4115-3233.glb",
+     "sha256": "a2324ca347ee076ffb6e082eac66736cf2670b9e11834662a609d41aab01eef1",
+     "bytes": 17356
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/11-2057-1617.glb",
+     "sha256": "e1f1f332bcf04e1fd8b5920b1d9904ce532f5cfaf2dcd0e25b4c300dfd08e1ba",
+     "bytes": 48268
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/10-1028-809.glb",
+     "sha256": "bf79097ff835267ee29f3d0b5768567db3908351b1cd8c15a7563eb80275d444",
+     "bytes": 7676
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/11-2056-1618.glb",
+     "sha256": "ded850d5aac0d1db11e102b2dbc59e2d9a345b05009557ed2f98c9bb9425065c",
+     "bytes": 10092
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/12-4112-3236.glb",
+     "sha256": "a1ac1374df1679922a99125d535e08e910b9d3b4e424b02103e68cbbc49af69a",
+     "bytes": 18048
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/13-8224-6472.glb",
+     "sha256": "2c9ee525cdca69909506cd141970a9d1b0480ee3d985b76ad257ab2fd79b12bd",
+     "bytes": 12388
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/13-8224-6473.glb",
+     "sha256": "30d4627bbe4cb1560211cd712b97c9b6ad883542ba4bf4ac90f68aad9a5d2f86",
+     "bytes": 139704
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/13-8225-6472.glb",
+     "sha256": "524e07ef3b008c380333a5a53eb0c5d18992c34a413abce2ae25cb40a0b423be",
+     "bytes": 9700
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/13-8225-6473.glb",
+     "sha256": "150995193625694db7ebf4bbd7e4b79eff5760e3b8bb6f13973a3f3325e7baa5",
+     "bytes": 47820
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/12-4112-3237.glb",
+     "sha256": "f1ad8ce79c22e729808d1970b6b966a401952a05e5f17043319f96bf01b26a47",
+     "bytes": 11436
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/13-8224-6474.glb",
+     "sha256": "a19ca3660d39bf9448788e107fb12801427c0af96faea8cf8d2f3dea5d7cd26a",
+     "bytes": 49836
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/13-8224-6475.glb",
+     "sha256": "8a7d752b70b6e8eb685716e30c162abc28d774eb2b9d9ca407ca2bafef7d3c27",
+     "bytes": 10068
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/13-8225-6474.glb",
+     "sha256": "c13b0d481ee43805e1c84112618d948b1b28e69f4ecf25e86a126b0da182c519",
+     "bytes": 26212
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/13-8225-6475.glb",
+     "sha256": "9c18d776a76a36b4111a78dbe9b12e11837cbe47437426b5531c99a578a6f915",
+     "bytes": 2040
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/12-4113-3236.glb",
+     "sha256": "dab629f0ef8dad0c2d4695711054a438f3c02efac64bbd7801ad80783643b0ff",
+     "bytes": 58264
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/12-4113-3237.glb",
+     "sha256": "354a6a35f302da6efc5277901747fbf64a4c9a6417018dd39519569836d96ee4",
+     "bytes": 34432
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/11-2056-1619.glb",
+     "sha256": "c003e8005c4a191cd6e8d2ef3f094d9a8bfe14a24901da1500a29b08b2b613e9",
+     "bytes": 76620
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/11-2057-1618.glb",
+     "sha256": "18c614136bba05479a9180ff6915d1967f0428f6197e31665cd717b3e1d29672",
+     "bytes": 4460
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/12-4114-3236.glb",
+     "sha256": "81af1540f8c06fe8e9c9c49e3db2fa9017cfecf904f17a6685e65134a60f3bd1",
+     "bytes": 36708
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/12-4114-3237.glb",
+     "sha256": "c7d60787a0cb204e03351b83500fcbd0ae206b48d75521a2dfc36acd271877fd",
+     "bytes": 4908
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/13-8228-6474.glb",
+     "sha256": "e2980df266c463d775a61792d800dce77a4ea7a6487e88dd2efa2daa43408663",
+     "bytes": 27596
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/13-8228-6475.glb",
+     "sha256": "3a27ac54b594947912623e0581311f61700f9e64d2dfdcd057746894eb28d794",
+     "bytes": 3456
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/13-8229-6474.glb",
+     "sha256": "4db320bb7df67cc854a61e6d163dff8c4cbdb53d898c6e6dc9bdd2f661e1f6eb",
+     "bytes": 22872
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/13-8229-6475.glb",
+     "sha256": "6fea4638d6a44884fb636559354eed4728000d5e35229d57a99e1000d47e4917",
+     "bytes": 5196
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/12-4115-3236.glb",
+     "sha256": "a9865cde4f76f56a6dc42a886af06c2af1e47662bd71fa1864216db40dff43c6",
+     "bytes": 23292
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/12-4115-3237.glb",
+     "sha256": "df00567e0b21f9b1eb957a88808b21fe06c7a77fc0514db168238c0a329fba47",
+     "bytes": 24008
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/11-2057-1619.glb",
+     "sha256": "d56128872a55d9cf79a9553f8249cb2cc90afca295158c62f7b3ce004c326224",
+     "bytes": 1896
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/12-4114-3238.glb",
+     "sha256": "c93378cf04e0cf2a86cb09a00ce7a423b6ce81c3b1b3c591ffb8f41342b5f17e",
+     "bytes": 28532
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/12-4114-3239.glb",
+     "sha256": "d23273e537102bc4f49123c77a2b5964c5f494accd742e4da8744ebe93e77b7b",
+     "bytes": 9548
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/12-4115-3238.glb",
+     "sha256": "b9436de59855c7c2a5c60830758e5783684d8ac17e10ae39e74eeaa24f8d9b44",
+     "bytes": 20496
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/12-4115-3239.glb",
+     "sha256": "0b38052fcdd666726c63b379bff468e4820d2d7da3cd846fd31dca368d1bc026",
+     "bytes": 13116
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/10-1028-810.glb",
+     "sha256": "caf81422fc1d33b0bb3d68bd1ae357527dc373325236e9b7b6134fc1cdd29b12",
+     "bytes": 1996
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/11-2056-1620.glb",
+     "sha256": "03df33ddb9d3174a8afcdb1a7861630fbf3565ae370d896c3159924e11fd1c5b",
+     "bytes": 6588
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/12-4112-3240.glb",
+     "sha256": "5186e9dac54601d44b79cbcfb699ceb4c970ecf753a94a3c0dc6242557291b5c",
+     "bytes": 13168
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/13-8224-6480.glb",
+     "sha256": "1653690c516422174413ae0d82917043f7d708bdbb83542d3383bd7bf5681553",
+     "bytes": 6672
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/13-8224-6481.glb",
+     "sha256": "fc48e564407bfa3605e6ccd7ce83bd37066fec8dbdca161e389b4e65cf55548d",
+     "bytes": 5244
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/13-8225-6480.glb",
+     "sha256": "11b83e436a1e9f4652853dd3d11a99543db650c21bdca87c8c5c961927365aff",
+     "bytes": 20396
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/13-8225-6481.glb",
+     "sha256": "a809e8f5c1bdc4ae05ee685050ff99c7c3ca0f2ac5764b06d8dfe19e0d0e5d0b",
+     "bytes": 75888
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/12-4112-3241.glb",
+     "sha256": "a9565647e92d7fd7a73bf48c8d1fe756d23936d4c68a6a9f38ab2aad6cf4b3a3",
+     "bytes": 11812
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/12-4113-3240.glb",
+     "sha256": "8e48898adee5a3fdd16f8303616ef7e82f9341d5b8cf93b9878c919d2a3de860",
+     "bytes": 7760
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/13-8226-6480.glb",
+     "sha256": "2789deb4644ae9ceae7598b7793831153bc9a77c6f83d7c8978e2ed23f597126",
+     "bytes": 6696
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/13-8226-6481.glb",
+     "sha256": "4f5423f549d73be6e4c6ef68cdc00b5556cf1efee1292959f15bae5d35be879e",
+     "bytes": 74260
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/13-8227-6480.glb",
+     "sha256": "579bd16b991bd9f59df32d67fa8fc804f8e91f6578f44e4b9c9e7b586fd69ef4",
+     "bytes": 3888
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/13-8227-6481.glb",
+     "sha256": "0819c16e8eccfa99ae21b94681bc24d2391799aab2a79790ea0139d1932d2ce2",
+     "bytes": 16580
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/12-4113-3241.glb",
+     "sha256": "7d88ac2cd828a9806e0a05bf37e96228d509b34a19a4086b27d5291cb10d0936",
+     "bytes": 21060
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/11-2056-1621.glb",
+     "sha256": "83958bcd726602550b2cc3f328ec612136d9a79b6f9227152b3763b24f12a9f1",
+     "bytes": 16260
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/11-2057-1620.glb",
+     "sha256": "97292941cc4ca8e3e1bd810281874e0516bb936ece15ad3e3cc145f574bae4cc",
+     "bytes": 25140
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/11-2057-1621.glb",
+     "sha256": "281aae80c91f093195be49603d9d831f1bd1a98fff153d85bc05e7632735c93b",
+     "bytes": 3540
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/12-4114-3242.glb",
+     "sha256": "9b810855b54395bc3abfc5d8ffb915527705f26102fcd64ac728532542469051",
+     "bytes": 11648
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/12-4114-3243.glb",
+     "sha256": "6c6bdbecdab1711c7c76f962841a713b068abdd7b55f3438acfb825b1df7ff31",
+     "bytes": 12704
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/12-4115-3242.glb",
+     "sha256": "cca311aec155cee9921ecbc2738f283d10ccf7312ad9a7c5af97732b707fe44c",
+     "bytes": 17404
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/12-4115-3243.glb",
+     "sha256": "e4ad66dc5e2a82037d66ec935a94febf7222986718b2762e0b03e365e4e26843",
+     "bytes": 27960
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/10-1028-811.glb",
+     "sha256": "1fdf49ce002e698fc20a3ac504b22193cafacbeac1459ec30df77aa56a5aac14",
+     "bytes": 1872
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/11-2056-1622.glb",
+     "sha256": "a247c0e7e20e4f6ddbf57fe08703fa14867fc60a02177ef7e55d631a3bda7abb",
+     "bytes": 2276
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/12-4112-3244.glb",
+     "sha256": "85140f2e2b28c31d9187916c0adc8633af7dab0850de97ef625e2849393b7da0",
+     "bytes": 6684
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/12-4112-3245.glb",
+     "sha256": "78c36a13bb8a0682ec02fb39e9b821e7cad1b244f2d712afc9e9fac804e1e917",
+     "bytes": 7548
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/12-4113-3244.glb",
+     "sha256": "678e2db2359aa8de5c03d9f0c567a1ae5bc6cb14321248be2acc410aec21007e",
+     "bytes": 12068
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/12-4113-3245.glb",
+     "sha256": "2e6402c512375ffc3bc6878d3e708e375e1d05c37252c4191080e5467dce84f2",
+     "bytes": 24408
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/11-2056-1623.glb",
+     "sha256": "3396e6ede30907ed201506a06c1b38e08dab0a36ec17904ae20c77cc8088a924",
+     "bytes": 3316
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/12-4112-3246.glb",
+     "sha256": "cef87386b52498c5b9979346e33b5f0fca32df55a2f4e5570e028eb998bc78ae",
+     "bytes": 13676
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/12-4112-3247.glb",
+     "sha256": "e846a536fba0619a50b4ec0813fe9202b57525318662861f60a4aa14e15c7735",
+     "bytes": 6000
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/12-4113-3246.glb",
+     "sha256": "d62f71ef7df4e60ee608964b8a96b55f9fbb15a6f7068779b856a8f51f7151ca",
+     "bytes": 19328
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/12-4113-3247.glb",
+     "sha256": "867b671990bdc43c6f661930c37de6d6db78a9118f6855aafcc572bad6dcbcb9",
+     "bytes": 14612
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/11-2057-1622.glb",
+     "sha256": "739076e5b2dc7a3a23b0f39dfa851280d9e5bb70ce800d657979c9e898ecd1df",
+     "bytes": 4204
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/12-4114-3244.glb",
+     "sha256": "830518c294c12e5a6dd5733375376bcf838880db6881a7e2e81a8b40d34c09cc",
+     "bytes": 8060
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/13-8228-6488.glb",
+     "sha256": "eaf3745f2a0aa17f13d862e120ae10b632f0ac79c39c8efc64fbae1179748879",
+     "bytes": 14528
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/13-8228-6489.glb",
+     "sha256": "4c1800e81375faeca0852f63f3bda0bd0c67b0988a26f2dba03c22383f4b7fb1",
+     "bytes": 12940
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/13-8229-6488.glb",
+     "sha256": "5751cf94dbd4de70d862a0886817cd75d6edc9ca80a4afb13f78c4294a8a2d79",
+     "bytes": 40552
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/13-8229-6489.glb",
+     "sha256": "5468df8a94b6bdd7c5b502473b573e2f1c622345d69986b8c14da5f80e9610ac",
+     "bytes": 5760
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/12-4114-3245.glb",
+     "sha256": "e1bf57aaaef3763460a512f6f604cda645d4039ff07b68c91179ebb6b29f8256",
+     "bytes": 10072
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/12-4115-3244.glb",
+     "sha256": "7566145e21b70636112998d52e62ca1047a9941fa2d815e5bc322ce6e9cdc7c4",
+     "bytes": 4444
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/13-8230-6488.glb",
+     "sha256": "2fbc1d9f10df2e261dd5967ddf04e25beb1ccd7c15f517d1274daec2d33b4ac4",
+     "bytes": 28096
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/13-8230-6489.glb",
+     "sha256": "3bd604f3a67d5ed37d32201446b3c2c757920edae3d4cc65bf064ff48fa1dd13",
+     "bytes": 7224
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/13-8231-6488.glb",
+     "sha256": "64bda198e216c96b034407813bfd06e20c83e1d12276fa21193ad86c989a5716",
+     "bytes": 10180
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/13-8231-6489.glb",
+     "sha256": "c7f00e54170e54208c0a921ad539888b477a90c44e1ec961cfe6edc9bd72a701",
+     "bytes": 6868
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/12-4115-3245.glb",
+     "sha256": "ab63f81830d68994baf4109551a8fd1a907adf457bd489a764867be178622717",
+     "bytes": 15092
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/11-2057-1623.glb",
+     "sha256": "ca092c015c44685981abbcb470c42e970e0d76755ce1fd78eaeff39c9a837509",
+     "bytes": 50388
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/10-1029-808.glb",
+     "sha256": "fd6959463e3a167866df5f35d48596941e6c1d8476400df083d4f2b9d73c6c4b",
+     "bytes": 5304
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/11-2058-1616.glb",
+     "sha256": "0eb93542deffa942c36fbe2d6f660629335fdcd022749614ef592a7497b51407",
+     "bytes": 5492
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/12-4116-3232.glb",
+     "sha256": "20cb4c250669288700363e08679a00ba41690143bfd67070c23702b68fe5c911",
+     "bytes": 15068
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/12-4116-3233.glb",
+     "sha256": "61943acb91895796f039071dd1d0be22616249a122fa03a82f69b6fc61293913",
+     "bytes": 30232
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/12-4117-3232.glb",
+     "sha256": "426bc168017725f1c3645ca6b0da148379970c730d3c5b06714a0a280c868147",
+     "bytes": 7672
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/13-8234-6464.glb",
+     "sha256": "0f10e7df95bfe6eafb1214de14df26eee046b1980d52597a31c0654683f96358",
+     "bytes": 6512
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/13-8234-6465.glb",
+     "sha256": "66741905d90ce2e70d357aab263f4f677db8f5cfc3d94d83307b9875359447ab",
+     "bytes": 8348
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/13-8235-6464.glb",
+     "sha256": "901ac3b45da6610898f2bd9ae9fbbf04300ae7d41dd2b8443a0ea77aa8fc5d5f",
+     "bytes": 65592
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/13-8235-6465.glb",
+     "sha256": "700a256a20cac499a29449450a3975d1967f4a831d5b72b304e5cfd68144f108",
+     "bytes": 7396
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/12-4117-3233.glb",
+     "sha256": "ea50457a2b0eb4f9ea57a0e529f7485c7816c2f8e7508d4cf0d8c4d9599bd0d3",
+     "bytes": 24268
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/11-2058-1617.glb",
+     "sha256": "64f27161bf2d932d9190a35cfb2f320d5772f98118ba6115fd7bed190d0bafc8",
+     "bytes": 2016
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/12-4116-3234.glb",
+     "sha256": "bff489e17e7890c7f0f7345366a0f534639d39841c9bc07d29c0b073796100b1",
+     "bytes": 13664
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/12-4116-3235.glb",
+     "sha256": "3a3e22e68afdc2ab22fd140c438d225bff1b6b6ae2ed668242bf5b7767ea870b",
+     "bytes": 19880
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/12-4117-3234.glb",
+     "sha256": "6eaa60f4b3d4429492b8a06191676df8b55ab712495031b01f9913d30408d2c4",
+     "bytes": 33276
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/12-4117-3235.glb",
+     "sha256": "a227c07c977ed246626dc37a8dd32983a46648930de68aa01bd7f522997070a9",
+     "bytes": 33172
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/11-2059-1616.glb",
+     "sha256": "bb8b007e2a5e37d55d6fe37a70a37c0d2e5cfe9a4ed1e4b398f4af809afd4ca5",
+     "bytes": 1972
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/12-4118-3232.glb",
+     "sha256": "9aeb5c0fbebd59dc7cfe0ed418200fbf4edf3f8440f45215a277cb02762b0417",
+     "bytes": 29400
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/12-4118-3233.glb",
+     "sha256": "793620aeeb49710f65edb3968650b569cfae65bf7e12e71242c0830be4de03d4",
+     "bytes": 15040
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/12-4119-3232.glb",
+     "sha256": "d7a8c2c35d9be4e0887b3c3d696f1b0814fe749bfa9a6e2705557face546f7cb",
+     "bytes": 19176
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/12-4119-3233.glb",
+     "sha256": "8fb5e28ac09ec5030e51eb448096812827f4c591b30b0f593c45ce0e62c29aa3",
+     "bytes": 18988
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/11-2059-1617.glb",
+     "sha256": "db5e51092e8b68ec21299827a39b2d85cc1e499d2c7017a7635e996db014e7aa",
+     "bytes": 7216
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/12-4118-3234.glb",
+     "sha256": "b90d01a85200c871099d26463152b9352b971924d81077f445abeab19e20d08a",
+     "bytes": 29612
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/12-4118-3235.glb",
+     "sha256": "77a9b87a8a804617654591147ff69268a3c57adf04288511324480e0797dbf95",
+     "bytes": 14392
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/13-8236-6470.glb",
+     "sha256": "bf4ce0e9f0711d9cc0e852fe94409298f2c7656d9938447fdea0d148d962a95e",
+     "bytes": 11804
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/13-8236-6471.glb",
+     "sha256": "50af66088ec66b7dca5cad77438664a75adf10b863919169f198a75023cae499",
+     "bytes": 50204
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/13-8237-6470.glb",
+     "sha256": "231006aaac88142549de810887ab3db327716940c26e93748a27d4bd7dbe5989",
+     "bytes": 38048
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/13-8237-6471.glb",
+     "sha256": "13c98ae668328aa2dbea4752d84119987327031db31db5fee83741d1c3440efd",
+     "bytes": 56112
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/12-4119-3234.glb",
+     "sha256": "cc43ea5c4b5d12abdc44098a58b0921517cf0c16a53754232d2777f50911631e",
+     "bytes": 2800
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/13-8238-6468.glb",
+     "sha256": "a545adbab8adc8ad42e58805b7b106efc0b9d1b580a71441e7b460974f4cc4a9",
+     "bytes": 13528
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/13-8238-6469.glb",
+     "sha256": "bb59334043b4a7e23d8cf67b317568f96d5a88a9a6c9e8e9aa0e69af33bb0cd2",
+     "bytes": 4024
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/13-8239-6468.glb",
+     "sha256": "1485a43b10f00b4c044949f82834c4465a1422c86968a629720e59de88978da5",
+     "bytes": 4552
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/13-8239-6469.glb",
+     "sha256": "a85864a51afd1ff38936f00cb09d5e3a14e754ddd57f4a73c4d98fb12edf90fb",
+     "bytes": 28868
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/12-4119-3235.glb",
+     "sha256": "b9bdf2e0e72325db76d3d9ed6bf35fe341ede4040333709c0ebe8565fb1b5b39",
+     "bytes": 6972
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/13-8238-6470.glb",
+     "sha256": "89528d2d4013db970dd97f9bdd5bbb1dac364ebbccdcd94178205813d4a6d758",
+     "bytes": 20760
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/13-8238-6471.glb",
+     "sha256": "8a6d55b6c10aebf4f461482872fce047b6fc3c48058e0ce7433b2547c57b4883",
+     "bytes": 32220
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/13-8239-6470.glb",
+     "sha256": "ce0ae54389b39cc54e6fffe9737552ed2b971c3d39a87f883871fd994199b140",
+     "bytes": 7616
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/13-8239-6471.glb",
+     "sha256": "d2f2c1aaf16f54c6d2aa8e2a2e88af0fe383a05430ab3303d57b141df5b8f008",
+     "bytes": 6300
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/10-1029-809.glb",
+     "sha256": "59d8af79f206e8a47bf80cfe14d6aa377bfb3a4597a08068fd7e13d0a6ac2b9f",
+     "bytes": 3244
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/11-2058-1618.glb",
+     "sha256": "6c71666490e618c36adc816c8829e66af902b238f9f6a25d5d5f38e3dca28ef2",
+     "bytes": 4348
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/12-4116-3236.glb",
+     "sha256": "60eb741b47168d6aaf826bf90d368b12de61fa7cc18d81691b0485027bf048d6",
+     "bytes": 4488
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/13-8232-6472.glb",
+     "sha256": "33928a58ed99f17696c4916a33ebf4f318fa50020eb58adf8957fd7de42fc580",
+     "bytes": 23644
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/13-8232-6473.glb",
+     "sha256": "1f3ffc25fc913f8596611a67862d2efda5b1609d8f5440c6fba5ed2d5f64e502",
+     "bytes": 5040
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/13-8233-6472.glb",
+     "sha256": "9833b9bfe1f7906efddd0e7216c5a37c632fcf74c08bd1a6f09b711885cd29e4",
+     "bytes": 9236
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/13-8233-6473.glb",
+     "sha256": "f9c02063bce52b68a721ad7dfbae17036f840f9bbc72267bcad03b0ca596ff9e",
+     "bytes": 28964
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/12-4116-3237.glb",
+     "sha256": "d574878aaddddd8ab7e726fd56d8e314db31102b866d8240e05792840d5219e9",
+     "bytes": 24896
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/12-4117-3236.glb",
+     "sha256": "622fc1d5c28e00332a3dd0a83e6e8f845b0adc3da19c94bc28624f78a65e9304",
+     "bytes": 23524
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/12-4117-3237.glb",
+     "sha256": "c9967c7bfc6580e29b888a2b9676db280774429be37b53b6f2c864e5084c3813",
+     "bytes": 15828
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/11-2058-1619.glb",
+     "sha256": "a0fa8af372c699f2df249d1a241ec60a7cba7b3baffd9830e82e231af2e68ff1",
+     "bytes": 5600
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/12-4116-3238.glb",
+     "sha256": "ce5ef49996ed418318787f84e287f015c212d914054141a6aade51f550555f1e",
+     "bytes": 37284
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/12-4116-3239.glb",
+     "sha256": "4b4ff3f3a50c5e1f5cabfc39c5187e7a58ee70323f651ba9f9013649f64f56df",
+     "bytes": 20908
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/12-4117-3238.glb",
+     "sha256": "215d37259bf33b4aaf2b2a014558ed3bb0108ac3311a736f95c29ffd3ec1c309",
+     "bytes": 28800
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/12-4117-3239.glb",
+     "sha256": "74468d592c877865dd5a13219f323f9e2b7fb8febfe0496a7ef55094b42e2cb6",
+     "bytes": 18580
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/11-2059-1618.glb",
+     "sha256": "95c35badf32b2ca641bf3aa497a8fff5b9421670e5f4ebfbb6de2007c24c4c35",
+     "bytes": 2132
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/12-4118-3236.glb",
+     "sha256": "6cdfa9239926487bbb403b1a7533b219ea782f3a2c987114c5f696148aaa9974",
+     "bytes": 30092
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/12-4118-3237.glb",
+     "sha256": "27ca04485f8dbc0bd46edb5ef3ad1265be1e0b5f55b47a42fcb13582cdf6dd86",
+     "bytes": 19616
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/12-4119-3236.glb",
+     "sha256": "5c798b24ac987f01933d12c989c24f218d2bdc9c7b7ab3521dce6d2b14904538",
+     "bytes": 11460
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/12-4119-3237.glb",
+     "sha256": "f161b9f4b6e1a6427202638d9998034b676967f2be04db5e131f01dd6fae2650",
+     "bytes": 22148
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/11-2059-1619.glb",
+     "sha256": "39def6a4425850ba5da354b4b82e502c34a7999309114421a736331682ec167f",
+     "bytes": 2100
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/12-4118-3238.glb",
+     "sha256": "4efb8c85db4c0c1e80f032b6d8b88e5ff9d246b3afdda892f74f5f3f98c5abeb",
+     "bytes": 19732
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/12-4118-3239.glb",
+     "sha256": "def669c000c78b8d5092d08b3e97cad4c81ac0708ac80f76ff8b895dc8e93b28",
+     "bytes": 30860
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/12-4119-3238.glb",
+     "sha256": "b81423a1da9dd600d7e422db1f4dad6dea42dbc1471db4ff7184ef6efc232f73",
+     "bytes": 18168
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/12-4119-3239.glb",
+     "sha256": "4477bd0f27fc06d716ffc9ac71f70eb313840badd5905dd9cdbd42f55b5cdf79",
+     "bytes": 14516
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/10-1029-810.glb",
+     "sha256": "7a669de5a78a6fdcad6085fcde722c22732b8ff4bb43bda31903b3b5a5fd6684",
+     "bytes": 3288
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/11-2058-1620.glb",
+     "sha256": "c1f3c9d6a451d2446a652e6e086f8e4b1dfc49571e2b94d176b280139c5b2603",
+     "bytes": 2388
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/12-4116-3240.glb",
+     "sha256": "434db5d96dba0d3bfe0169a06ea13ad32fe8af9abd235d8b4244cec71f320e05",
+     "bytes": 6716
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/12-4116-3241.glb",
+     "sha256": "36b693042dad56facbdf0fd1ca804c290f279b1e5454bb6d4b82d34c97b290ab",
+     "bytes": 20320
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/12-4117-3240.glb",
+     "sha256": "865a8cf9dfeceb913172d572417f0362bc8828354b55bd7461267149ff6c6650",
+     "bytes": 19048
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/12-4117-3241.glb",
+     "sha256": "9d94d108a2bb5b8cc5ba7f6485ddafb26b8e9806abab2418637ab98df721bdfa",
+     "bytes": 32044
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/11-2058-1621.glb",
+     "sha256": "adf55237d8797150dd43a8f5fdc7f892132e8fbc656ff00f15e83a9eb9eaa5da",
+     "bytes": 6220
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/12-4116-3242.glb",
+     "sha256": "747c38182dc492796e69cc3c78e5f30835ac71ead6a29929e733ceaf2f1089f7",
+     "bytes": 13416
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/12-4116-3243.glb",
+     "sha256": "448555c146c36d772e7b5f15cd54a99b34a962d0128b7fa18847c4a230efcaf4",
+     "bytes": 16876
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/12-4117-3242.glb",
+     "sha256": "f2c26dee7ef094c5fa658ca8124d553fa83cd9eda35a51f08521201aab967d62",
+     "bytes": 30956
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/12-4117-3243.glb",
+     "sha256": "81dc0c95a4241ebc92b7b369ac51f8644b7bfb5906a7be9e213e5d7cbdb64a33",
+     "bytes": 25256
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/11-2059-1620.glb",
+     "sha256": "a864425fbd9f8889a879ab0bff1c5a323736b1a43d32ac9d3f45cd62084d7117",
+     "bytes": 2176
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/12-4118-3240.glb",
+     "sha256": "5523cf15ac1f903d41dbc583ea66ab1c769f866ad78ae396f9e99aab34f0e8bf",
+     "bytes": 23644
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/12-4118-3241.glb",
+     "sha256": "265bff575f3bd33f6b929adbed32c3bcf47f8aab03a6600bc1239ea8c130b26a",
+     "bytes": 24152
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/12-4119-3240.glb",
+     "sha256": "19ab937aaa3f7c30c4f6c1cd1603815690c8ff3084339782843cbcd4392db148",
+     "bytes": 15684
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/12-4119-3241.glb",
+     "sha256": "5044ab74674c0a0614a5e41caf0aa7c46e2598f99f6f52633112485e0e72fa77",
+     "bytes": 27992
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/11-2059-1621.glb",
+     "sha256": "552e4c2a294712448c63f26a2591cba9afd629ce27bda054a9223cdf8ac1da6f",
+     "bytes": 3796
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/12-4118-3242.glb",
+     "sha256": "f51ddf9134537b70dd9ddde94f5aad8bb4eb950c13006eddb865a70216843456",
+     "bytes": 4196
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/13-8236-6484.glb",
+     "sha256": "0923111e3f882137346059c20bb1fd25a24de78d04da26482f715f78fb51bbf1",
+     "bytes": 5496
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/13-8236-6485.glb",
+     "sha256": "134f61b11ecca3b81443f2549f0cd884aaceb26113cd73cf0cf762f39e941093",
+     "bytes": 7704
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/13-8237-6484.glb",
+     "sha256": "1c524b33cc152f77c421693d44c8ed8bf1556e140efcdbaf69f2458a3e6fe4ca",
+     "bytes": 5648
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/13-8237-6485.glb",
+     "sha256": "112a2d6d313322819712ae3512885e784d5ad2671ff6ca573ca8cfe529800319",
+     "bytes": 31744
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/12-4118-3243.glb",
+     "sha256": "32253427bbf11c85ee944c31db8064a11f68e5696a8b2b1cc001aae2442ade58",
+     "bytes": 4472
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/13-8236-6486.glb",
+     "sha256": "f9fe5b9764c41cbbd8070cc51f5a2de22839c19ce77ec666799549f44d18eb95",
+     "bytes": 14944
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/13-8236-6487.glb",
+     "sha256": "77bd28d3b6df15739068c5b7783ccec4d0f04c7b1a38de3561e9f95f45d7d450",
+     "bytes": 10376
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/13-8237-6486.glb",
+     "sha256": "bcab9f53bf4302e80baa5ab894eae3c475723e21b977f1267599b6bceca1a3c3",
+     "bytes": 22728
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/13-8237-6487.glb",
+     "sha256": "71fab32b77c07d6838477ac586fa48f2505139b8601785c0b9ff4a36c51403d3",
+     "bytes": 6884
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/12-4119-3242.glb",
+     "sha256": "0593474990d760fddfb2dfcdb5774cbcbaa9006561e3111359598fff01ae9953",
+     "bytes": 7504
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/13-8238-6484.glb",
+     "sha256": "f735dbb5a35d5010335bc769e59b6dc19e3bf00466d39dda950ba7b74548ee1e",
+     "bytes": 8428
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/13-8238-6485.glb",
+     "sha256": "b3f5b1cd183037d3bbe3fa74946565fec3f661679c6a8376ba9ade4cd3d28fd8",
+     "bytes": 20248
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/13-8239-6484.glb",
+     "sha256": "499c942be87c10eb6f24c4dc5710bffbc87956d04a8f7794b584434733f7aed8",
+     "bytes": 20004
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/13-8239-6485.glb",
+     "sha256": "ee9d1e93773e13d541c9b58f30626e75454c26446ca3d8824de7d0a0d7065c0d",
+     "bytes": 5216
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/12-4119-3243.glb",
+     "sha256": "fc7c0466c21e999d3a0c059cf92026b2712af61a6aa91671eea32bc85260c101",
+     "bytes": 3048
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/13-8238-6486.glb",
+     "sha256": "1c17ef5a6e41673a4a0066a4eba3651870bbb02cf356734267af70c7a25af997",
+     "bytes": 38780
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/13-8238-6487.glb",
+     "sha256": "298e250d0cb2474b7a201eb704390eab7ddf20b2a292ee6a4ec05f8ccde0cbe2",
+     "bytes": 7584
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/13-8239-6486.glb",
+     "sha256": "0a14c772af3262b9862162694a45b26e136fa48938004c82f9f61cfc161ee8e5",
+     "bytes": 15420
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/13-8239-6487.glb",
+     "sha256": "15e487792a1cedebd6e43a14cda00cd8f0ba09e3070d917450f5af18362a5f8f",
+     "bytes": 6256
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/10-1029-811.glb",
+     "sha256": "0bac7aeb81f2708d22b5a6abda6e249089021893d2647458031e3c72dcbb9b14",
+     "bytes": 1872
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/11-2058-1622.glb",
+     "sha256": "fe79d276bc77882caf4b87ca9dd4df64083af94d9e9d1dbc428be508f90b9288",
+     "bytes": 2068
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/12-4116-3244.glb",
+     "sha256": "e795a40bc1cf53bb471b88300cf4d93fb185ae6756461b17f7f89de23ec400c8",
+     "bytes": 12768
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/12-4116-3245.glb",
+     "sha256": "757eda0b4a909c8179129e80f92c12e963b98b69641fea5a3b0d6b21f32bf5da",
+     "bytes": 28156
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/12-4117-3244.glb",
+     "sha256": "d2474f0b58c47b734d6a87c3eea5df9306a8b613cca8b12269b5f28221737389",
+     "bytes": 14156
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/12-4117-3245.glb",
+     "sha256": "6b2d894146a67da0e077dfe58066dc67f5d858b3b78230fd3ffc7dd598d5480a",
+     "bytes": 17604
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/11-2058-1623.glb",
+     "sha256": "7fd9bb9edfc8e480822a87db7b2cbe16fe7a9a9dad84509b0e4df27e192f1289",
+     "bytes": 3772
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/12-4116-3246.glb",
+     "sha256": "4e0da2fd6e9bb646e9e04f006a1351fd304c6cb185d2f728bd7f25d1b4fb8d9c",
+     "bytes": 15856
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/12-4116-3247.glb",
+     "sha256": "ad9317e3a78fe169bfa5db9c9bc9a6466bb71933f6da7cc9b93ed40770ed6fce",
+     "bytes": 24892
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/12-4117-3246.glb",
+     "sha256": "8a7a7c9fd135f3433d9516f603de527b1ff1c8de950025918655b14ba1870a9c",
+     "bytes": 11708
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/13-8234-6492.glb",
+     "sha256": "1f54c4987704775eb4a7fe32877a4c1c9430b8089364001bbb2aa52172be9919",
+     "bytes": 30652
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/13-8234-6493.glb",
+     "sha256": "1f5cb8beeb325eb4fdeb6a8e29ba1b5cf88b3c4df0a96844ce75d21fa3cd9bc8",
+     "bytes": 68232
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/13-8235-6492.glb",
+     "sha256": "2c57bf6cc2ee6533c6feb9f9cba90eaaa3a084a108e73a285beeab730cbc16fd",
+     "bytes": 16220
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/13-8235-6493.glb",
+     "sha256": "0b08dc85991a68c8df90dc423911d740b95dd8ec1562f56f0c2041812fec78e2",
+     "bytes": 49940
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/12-4117-3247.glb",
+     "sha256": "314a37f2677908a07cc47c81a710508dcdb9998adfe5aa154c1768561938c3f3",
+     "bytes": 17404
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/11-2059-1622.glb",
+     "sha256": "50e4589fe3f2ebd8dab41c280a6ae9c97cb59aacb8001ee8138b49a5eb56cf28",
+     "bytes": 3404
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/12-4118-3244.glb",
+     "sha256": "b666b7c00e3229bb157176576349e6828c19533675e51e5c6e953fc5c4422030",
+     "bytes": 32996
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/12-4118-3245.glb",
+     "sha256": "0fc70d3899e4986722562a3eb5f9150d8191cf38fc250e9b4431476e4ed7cec4",
+     "bytes": 21140
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/12-4119-3244.glb",
+     "sha256": "f5834f465f13649c94d3fda5ded80485bb387d4670c972ca7724e6d5424c884c",
+     "bytes": 22968
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/12-4119-3245.glb",
+     "sha256": "22fd99e6280adc0a4b39ac29fe018570ffe0f916bb18f5a959b2e367e97279c4",
+     "bytes": 16744
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/11-2059-1623.glb",
+     "sha256": "4f58d7bd44623d786b50a4f11dcd175a1c22a16b33299e8b9aad8d81a5e33956",
+     "bytes": 2112
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/12-4118-3246.glb",
+     "sha256": "60f1c7909d83d05194d1458fddb40530965b6a6e9d4eac6a1749510d98d06bc2",
+     "bytes": 23852
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/12-4118-3247.glb",
+     "sha256": "08ef924ed2a432786860e9d00862e0c590451141f9bbe1bbd3cb6fd6761af750",
+     "bytes": 34276
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/12-4119-3246.glb",
+     "sha256": "45b5fe54ce484b8b1a0735c788287b0ca449f46caee2e9ec0d5c24a09da18ebc",
+     "bytes": 29276
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/12-4119-3247.glb",
+     "sha256": "0c9f7424452d4576ddd45b1b02886e30b6c002497c09dfad61b6627c6f4d7d25",
+     "bytes": 16608
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/10-1030-808.glb",
+     "sha256": "736647229dbd1b4198a5297d07fbfcb518e586441e8caaeab6bd6250cf7f0a99",
+     "bytes": 16364
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/11-2060-1616.glb",
+     "sha256": "18c8b4e5dfaaec612d4ec9e67f14dacd8112c0b7f9071e3d7edbe173e32ec125",
+     "bytes": 8688
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/12-4120-3232.glb",
+     "sha256": "0856c52788cbd36961ad5444f2fa8d8c926e971d054495fda252340bdda63920",
+     "bytes": 35424
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/12-4120-3233.glb",
+     "sha256": "8a89d3caa47d4589e010d234defb527ad3f8d74eb9db0be0d5458d5b1086aa3d",
+     "bytes": 6072
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/13-8240-6466.glb",
+     "sha256": "f3635ad4019b06b39f3c89944cd5dc773c97bd9e13e9eed55b15aec9ab83b393",
+     "bytes": 4668
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/13-8240-6467.glb",
+     "sha256": "895b089e7aaa4d41a66b1a14c3892dd56a884bd74d6489811765a39908b7853d",
+     "bytes": 5700
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/13-8241-6466.glb",
+     "sha256": "2393f86add6b0c59465a3119cd771d50723c12cb16f149a5188be4ba4a390034",
+     "bytes": 14536
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/13-8241-6467.glb",
+     "sha256": "202fcbc34a97571539f35e757947e12da91c5f4ebacabdcac650ae3473a9723f",
+     "bytes": 19212
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/12-4121-3232.glb",
+     "sha256": "056a9d24b1af0b4e6c9511bf930b9b1cf3e4852cee31c19a590c007bf44ab67e",
+     "bytes": 23904
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/13-8242-6464.glb",
+     "sha256": "f43635db0db1782fa494ef155116bb85074b8fa8828733f2240938fe4e7d3cb6",
+     "bytes": 59088
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/13-8242-6465.glb",
+     "sha256": "087915363e771d7f5beff59fb9acc9ca142a1689d79a77fe0df1af1a69bb7734",
+     "bytes": 49188
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/13-8243-6464.glb",
+     "sha256": "e96098f0446c671e4921326abb242860d9f87f2e2d3585d3f371f941ac823a79",
+     "bytes": 71036
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/13-8243-6465.glb",
+     "sha256": "f5ea89d9b09794d119a97ace3ea8d12f734d2be0e03a4b01242cd5d1e824c89c",
+     "bytes": 110492
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/12-4121-3233.glb",
+     "sha256": "fe1d5decba871d6811bab54943c0adbece881bf7490a912e03e763459c6e15d0",
+     "bytes": 13700
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/13-8242-6466.glb",
+     "sha256": "2a8d85e3b018fc286e320ee936fe1d5833e01385656dae42d266000a5af49c08",
+     "bytes": 32404
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/13-8242-6467.glb",
+     "sha256": "594af2a4d1d385a8df8aaf59c5ad61e787acbf81dd453a7cc4615b3ad2cb3d54",
+     "bytes": 40996
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/13-8243-6466.glb",
+     "sha256": "c57802c6786a1321146abfc0b8dbbc522dea3962f3774edf63f18e931cc3a437",
+     "bytes": 46484
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/13-8243-6467.glb",
+     "sha256": "e9f78870f60023e783495b6f9cbf8d5240b5c6a07e08486bc8fc96091c004d61",
+     "bytes": 7508
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/11-2060-1617.glb",
+     "sha256": "fb0a4d8ca7a3e9dba0bfc28579aa739a501b53be0dae8d8fcfb516792908b947",
+     "bytes": 2192
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/12-4120-3234.glb",
+     "sha256": "c887cbad0f135fc2a2f2c76d66e30efe1ce1a7d9a37d0a5bc0f55fa32e36c75e",
+     "bytes": 26592
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/12-4120-3235.glb",
+     "sha256": "abe893fa4b9a1f6d63c25a33fc334a6d094841b1f18640f94969b68f602d8b9f",
+     "bytes": 22208
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/12-4121-3234.glb",
+     "sha256": "715fbbf74f0763ca42a3efd4a70565483250b42c3ac5e458436cf9e233a5d628",
+     "bytes": 22508
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/12-4121-3235.glb",
+     "sha256": "c907d21fde36de5445e59b9276d3d94573f7e47abe0f6c9f2d07eb493e24bb09",
+     "bytes": 21116
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/11-2061-1616.glb",
+     "sha256": "a660bbd8ad3d8abe7c68ffb1d9a4aa0e78c9480399b5b918436dcb8706854daa",
+     "bytes": 20512
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/12-4122-3232.glb",
+     "sha256": "d5b032fcc2a24a7ce9c23228da3b3707407891ce712675ea3807414a9c566ea3",
+     "bytes": 31548
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/13-8244-6464.glb",
+     "sha256": "d03169ac48df03a749847a7268f3d78a72b7467bf1584cd234ea0aa3cebad7a6",
+     "bytes": 88316
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/13-8244-6465.glb",
+     "sha256": "655fddba280549d304624a6549d2323eda145457e5ae4a4efc7be7bfbb83063c",
+     "bytes": 167812
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/13-8245-6464.glb",
+     "sha256": "1a9a2dacb7318e533d96d44a9bc0039ff1b5b1d0d26dbf75af380e9351a3cfba",
+     "bytes": 84488
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/13-8245-6465.glb",
+     "sha256": "d03bac80f7ed57221017cc17411b03df592656a19e51e533f91db15e7b3536f4",
+     "bytes": 85228
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/12-4122-3233.glb",
+     "sha256": "b5c1d7ba79ca95d4a1598534321c87db6a07ed29d88b1d5fd545958c874096a8",
+     "bytes": 4188
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/13-8244-6466.glb",
+     "sha256": "692f27069da437abd90f731433834af6e133d6bec416b8741991a1568396149f",
+     "bytes": 24348
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/13-8244-6467.glb",
+     "sha256": "1a99dabf2edd78d4a14f1d8bcb3b0ec927de81f45ba5fe92871e3bc49e140dce",
+     "bytes": 7108
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/13-8245-6466.glb",
+     "sha256": "849670932549f0b3cf8c5dbb2fa4e323b1c85c0aa8fda3169a48809ec98a0e09",
+     "bytes": 12300
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/13-8245-6467.glb",
+     "sha256": "ba6dd951b1ea44a44a0222e21fca0b5e4799ee45f98c6cfe6a286133e131505c",
+     "bytes": 8956
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/12-4123-3232.glb",
+     "sha256": "cac88170a61297655d0faf80d35575bad6e30c0b2d84d4d69d58582c3c2ec556",
+     "bytes": 29000
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/13-8246-6464.glb",
+     "sha256": "7df651c3d607f6d3f2d19553a6f2d4c6fe413653aa880b10d77690520551ceda",
+     "bytes": 84552
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/13-8246-6465.glb",
+     "sha256": "f792fe5300c1b8d970fc61b7d2932a2c9b287e13ab8469924cd01385188c0bbd",
+     "bytes": 75940
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/13-8247-6464.glb",
+     "sha256": "712dcdb4ad0c9ac4a88a036c008aab1e7278da5a3b0611a98efbcab7d75982b1",
+     "bytes": 32576
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/13-8247-6465.glb",
+     "sha256": "c67b1c9e9f69186bf3f88673733ba20e43b5b1af42755265e3b4df730afab62f",
+     "bytes": 30272
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/12-4123-3233.glb",
+     "sha256": "823a199ae7caed564cb475df6b69e0690c5074a5162591b79a09a990b648397d",
+     "bytes": 19592
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/11-2061-1617.glb",
+     "sha256": "2750341487e428e34e795961343203db8596455d536c83ba32e19b56844bba6b",
+     "bytes": 2088
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/12-4122-3234.glb",
+     "sha256": "9c74e8a3937d423113689f9f3b65c3c226f9a26e048e6e90cbcbbda4b3d9aeea",
+     "bytes": 18800
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/12-4122-3235.glb",
+     "sha256": "c9af01293e68d48d4480c43364c1d2e05aa6de8279fc3163863a545021a8f69e",
+     "bytes": 14328
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/12-4123-3234.glb",
+     "sha256": "e41fb98784fb7b6cef88ca7c5c614cb1e905055f883fdc8ac33c465752204961",
+     "bytes": 25648
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/12-4123-3235.glb",
+     "sha256": "f5abde6fa211f7eb61049b1eeaa3bbe04c0aee53ce0987a61deb273afd5264b3",
+     "bytes": 13832
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/10-1030-809.glb",
+     "sha256": "8de7c865c626e548d3d2b2aa8d5323a86035e94e14db3ff5ad64fcdc9f0786de",
+     "bytes": 3436
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/11-2060-1618.glb",
+     "sha256": "88ab5324cb4d96accd620c1248246b35b7994cbb5d7718d9358a1c97280d5d96",
+     "bytes": 3644
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/12-4120-3236.glb",
+     "sha256": "ab29c073c596d77d7f85b049c54c288382c2f4ebbeee9177a395abe5a480cb50",
+     "bytes": 22668
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/12-4120-3237.glb",
+     "sha256": "71a2c9f3e02effeddfc387e2e099d5ea72901bef7844e405b552af53e6c19c77",
+     "bytes": 18576
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/12-4121-3236.glb",
+     "sha256": "79eef42b32bcc4d129e90fe22c00062fba2017fe4ab4c7fc6a061776092b3a25",
+     "bytes": 17532
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/12-4121-3237.glb",
+     "sha256": "7d292e0e76b9c5e75b1ff67e55aeab1e32492ffe3af2a8a213b7b9aa77e85e01",
+     "bytes": 21108
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/11-2060-1619.glb",
+     "sha256": "330385dc6871e12bf306dd1d3af37ff03c7efc8af4f496dfb979d2839d401342",
+     "bytes": 6000
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/12-4120-3238.glb",
+     "sha256": "0af75a09d6eeeb021b939ba5d12864916fe399c598b9e07dc15b9645286966ee",
+     "bytes": 18784
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/12-4120-3239.glb",
+     "sha256": "6d644b8333feac751a42caa73d7730601b7a6ef3dd455b9cdfe237e31a132e13",
+     "bytes": 30104
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/12-4121-3238.glb",
+     "sha256": "405902b113fd45159b32932969b5af8516ce2da2a4925c43f4da20cfbd501382",
+     "bytes": 44928
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/12-4121-3239.glb",
+     "sha256": "e55fa5a1e7b59a96ece09ce5bd38039cbb59372cda569a3d30ca01b7c3a55af1",
+     "bytes": 8272
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/13-8242-6478.glb",
+     "sha256": "95988d460b1dbad1e2a688bb360d4505960b4490fa3ae10e3f6278a7b4ba76e1",
+     "bytes": 6472
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/13-8242-6479.glb",
+     "sha256": "1ff4f5fdc3592739da82b576714edd77885ee7dfb7f26f91c1c3ce17aa94ad9f",
+     "bytes": 60956
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/13-8243-6478.glb",
+     "sha256": "24df9c7aef9c5a73f4d32f1b9ee051dbb0888869e307b81bd493b2eeee7afc74",
+     "bytes": 9664
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/13-8243-6479.glb",
+     "sha256": "e7cf8b313519b2f61c8a1f99b160a265bb779f771e08aca8444fc4bbfb18da26",
+     "bytes": 26756
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/11-2061-1618.glb",
+     "sha256": "421e68a421e11e55bb062b52afebc51ea12fef74b2481110707fca1951d7207c",
+     "bytes": 2084
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/12-4122-3236.glb",
+     "sha256": "93f3108e6ce0b6735bb41c0d538224df4322206056ff166bed3eef1a5a6b8d0b",
+     "bytes": 29132
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/12-4122-3237.glb",
+     "sha256": "c31f90f6f33aad4e5958cddaa29ac243866bc882370056cae89576ca7e27cc6d",
+     "bytes": 20500
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/12-4123-3236.glb",
+     "sha256": "767afa12b42c451a93ff08fe4d20e70a99379d7d9c6c9f3fb50c16e8aa5181cd",
+     "bytes": 12028
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/12-4123-3237.glb",
+     "sha256": "5cb36fba56ab0b0cd646597b43c2d5b47983901db134e844814dbea12c9fa111",
+     "bytes": 12608
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/11-2061-1619.glb",
+     "sha256": "8894868d0502aa01f51ea62e320328d3703962cdd4334da082688cfe167fbe0d",
+     "bytes": 2164
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/12-4122-3238.glb",
+     "sha256": "30e4617ec454cddb4e43b9e03528481c5397d2211c17555bce3d49646b1dbe03",
+     "bytes": 27684
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/12-4122-3239.glb",
+     "sha256": "7266b242231affca3b4d39186384c14fc89375ed0605eddae2c94b6bf0869314",
+     "bytes": 21652
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/12-4123-3238.glb",
+     "sha256": "87377112ccc165ac697d23c659ec4c0027f7b67e32f3310abfd0e21dad60b7d3",
+     "bytes": 18516
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/12-4123-3239.glb",
+     "sha256": "2d84bda6683c0f6f4c15d942c34510d243691296ba67d19dd0c0a2bac6a77c36",
+     "bytes": 20312
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/10-1030-810.glb",
+     "sha256": "e07f44e13434b0ae74110bde72a01003fb55f3f3391272f2f63cca8e2bba238d",
+     "bytes": 1856
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/11-2060-1620.glb",
+     "sha256": "b7a3aa86a3eef5ee9075143b1e4a7244a52e8e5f783293027c495a66ff732068",
+     "bytes": 3524
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/12-4120-3240.glb",
+     "sha256": "fbcd2176adb14e57aa71cdc7b7fd101612d00e71c9c8b1df6633b0745d204418",
+     "bytes": 27980
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/12-4120-3241.glb",
+     "sha256": "a50246047a093cbfe3d2795b913d887145cd984dd75ef7347e425abed87826b0",
+     "bytes": 16472
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/12-4121-3240.glb",
+     "sha256": "c67730a984c37421b7434bf51aaab8320acacc964c6d889cad73450c279d98a2",
+     "bytes": 24216
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/12-4121-3241.glb",
+     "sha256": "516cbdaf3119516d0d603a2757778f43766db3bf31dada47d7ddf4cc4913ecf6",
+     "bytes": 17816
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/11-2060-1621.glb",
+     "sha256": "e151a71958b5a66e25096984e2bcd0be29fc64b8fe6f0692876c872381008f0c",
+     "bytes": 3444
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/12-4120-3242.glb",
+     "sha256": "eb3eeaef4741b0a842e6b8dd1069f867ca1b1e4315e92683fd04392debc3cf4e",
+     "bytes": 13832
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/12-4120-3243.glb",
+     "sha256": "bff68c78ec3cea3af62e97cc534066e382c6c4772b2010156d98a31f76115ebc",
+     "bytes": 33972
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/12-4121-3242.glb",
+     "sha256": "c3a047ff39378637daf3ee7ae02f07236d27bef44da98ab1ecfb8341b3196fab",
+     "bytes": 31044
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/12-4121-3243.glb",
+     "sha256": "fe1b96015fa24a94dcf77d7f8c87b053c7a9de4cdb7198c997c9aef88581f09d",
+     "bytes": 18564
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/11-2061-1620.glb",
+     "sha256": "be84d6f9a26a996ddeb43dc0aba716462490031612801833e28403f08a3db897",
+     "bytes": 2152
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/12-4122-3240.glb",
+     "sha256": "159d5bb2c85d832f91b5efef522e036fb3b535f3e4f03c9117fc233efdec1db5",
+     "bytes": 21612
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/12-4122-3241.glb",
+     "sha256": "18e0c9d53413b184e78b4fea90184787f99dab989b6cd90170a5c6ead48c02f3",
+     "bytes": 18068
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/12-4123-3240.glb",
+     "sha256": "709ef0d5cceefb9e7ff2d42f3c96365e65fd0cefb99e6bdffdd0a8cff9f704ff",
+     "bytes": 20844
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/12-4123-3241.glb",
+     "sha256": "aca69a2f0fd441f8d4e506f2b7a74d6141a08f76834d5de50756436406f85d20",
+     "bytes": 27288
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/11-2061-1621.glb",
+     "sha256": "be0b5e36b357659174eeb212ea302e7e50abc0ecf2d058d4fa9e09abfc76a83d",
+     "bytes": 2200
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/12-4122-3242.glb",
+     "sha256": "a38119605fd3ee7de5f62ad14258d1b609a725525a1b3fb90f0d6dd8d57d252b",
+     "bytes": 28436
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/12-4122-3243.glb",
+     "sha256": "9333d740944b319df79e541dd902495d5feaf379907142140f46223198537742",
+     "bytes": 27484
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/12-4123-3242.glb",
+     "sha256": "525de0ea499ff44b679e69e85195bbe37913d1c05514e684c4757a7427b39065",
+     "bytes": 38492
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/12-4123-3243.glb",
+     "sha256": "b37b1e474b4d720a2708af2c4e1ecccebf26b0b1da1e806acee4c739b3bf608c",
+     "bytes": 22528
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/10-1030-811.glb",
+     "sha256": "cc683649b8b79881a0caf7cd521c94696040de7cf44cd915858b15bde2a0c09b",
+     "bytes": 10028
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/11-2060-1622.glb",
+     "sha256": "13337ed4d9c870f75a050baa2c6aa12e324ea653277e9b4ce8ec12d9754799c2",
+     "bytes": 3816
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/12-4120-3244.glb",
+     "sha256": "c9e72909b03eb74377849a8f96c62bd50c8e3696c58adefb3c7a8bef0c957312",
+     "bytes": 21884
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/12-4120-3245.glb",
+     "sha256": "9fe3b7f6e0e58be01fdc14ebe3d01bbebb68dba1a1f7c870c9ae8f0317b77638",
+     "bytes": 22660
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/12-4121-3244.glb",
+     "sha256": "564bc0748bf3119835a47f18e8e204b7b3326d75c6ea3222446197eb99f23d1e",
+     "bytes": 11192
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/13-8242-6488.glb",
+     "sha256": "a2182347add6b7e46d904799365363447e2dfc0c33778b839a7882d87a17d3b5",
+     "bytes": 65188
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/13-8242-6489.glb",
+     "sha256": "f441d334bc91635e9f32490de2551594fc0f0bac2282df4e4640da846dcc6b89",
+     "bytes": 10156
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/13-8243-6488.glb",
+     "sha256": "fff52c18e359b3276f0b70b6b3005efc6d571beb491a4ed4dd91b20f2982875f",
+     "bytes": 48792
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/13-8243-6489.glb",
+     "sha256": "1a6b18b3d4308f60dea1dd50390f042c5260ab3c38baf89780649a378d5ca0bc",
+     "bytes": 16776
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/12-4121-3245.glb",
+     "sha256": "46cdb8c239a8b6eb4d7775be2166f1ed4354a69db8383ad102acca672fc20125",
+     "bytes": 23156
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/11-2060-1623.glb",
+     "sha256": "9d71d7f65d653e380965515b153dfaca10955ffc590b221458503aacbdc7cefa",
+     "bytes": 5736
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/12-4120-3246.glb",
+     "sha256": "2dceeb9270d77497b8b5c7e380ab93a39b758d3613da8d7a5390f48bb96e8730",
+     "bytes": 18396
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/12-4120-3247.glb",
+     "sha256": "1d72a076cf9e587031376e7c09c1c61b90c971580b0b7b0c08651f0fd271c6b2",
+     "bytes": 20620
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/12-4121-3246.glb",
+     "sha256": "78e2ce0015a3e12494416c52b0c57e12d27c31848cb3ac8185d44ce33645ad9b",
+     "bytes": 17120
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/12-4121-3247.glb",
+     "sha256": "3c51eaadacf46ea92ab8e5116035d267594d2f69557cbc1e87ea08aeeecbeacf",
+     "bytes": 31044
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/11-2061-1622.glb",
+     "sha256": "3c632cad7c74cd0b2bf4a1f0d9ec2b6c0fab4520a90b0dcddcdd91c77b6d16ce",
+     "bytes": 10896
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/12-4122-3244.glb",
+     "sha256": "565815d670ee8fc3d804ca66054cc5798f7c785914ccbae11812282eed6ca5bf",
+     "bytes": 7780
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/13-8244-6488.glb",
+     "sha256": "6a7aadeea90124f3f957963969b5dc1b23dee1e2a56a20f969a2abd14658dbf2",
+     "bytes": 6356
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/13-8244-6489.glb",
+     "sha256": "b4d86bea5dffd4c52061e4a377a6060b6b9454e3f91b1ad94e075a779411f2cf",
+     "bytes": 8680
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/13-8245-6488.glb",
+     "sha256": "409a89f73ccf2097a9533e063a5dbf461b7dbcf668eee1bbaae0da88d6656664",
+     "bytes": 11024
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/13-8245-6489.glb",
+     "sha256": "132c44d385ea79db2d2c7524886e141d276b6132ade2daaf8f714ed167d2bbf9",
+     "bytes": 43464
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/12-4122-3245.glb",
+     "sha256": "3d3d0a528adc2b8f5a6c52ce619cc009156f91c078fc3b36b0a9de31028bb98b",
+     "bytes": 35204
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/12-4123-3244.glb",
+     "sha256": "9b1731995350c8c15b95a0c0b44c9c3870d3175b986d38ab237634669b1d266c",
+     "bytes": 27580
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/12-4123-3245.glb",
+     "sha256": "fdcb5aa9bb37dbe89c3b16e84419502b074b4a9117a861c7148f02df5c954c97",
+     "bytes": 17720
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/13-8246-6490.glb",
+     "sha256": "543fe5617b1bdcdd35ca5f460be5b303c819fb21d8b27d4dfea24f1d24390dcc",
+     "bytes": 14044
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/13-8246-6491.glb",
+     "sha256": "e4ba1e7cd40d94b2098fb8dc10a4295d6d386b46f42cc00b594d5655c4ba3363",
+     "bytes": 16796
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/13-8247-6490.glb",
+     "sha256": "f0cf8506113158bfc872ca7e0a3a1731b041d33e74075ee7ba7c211c4948e4b4",
+     "bytes": 37644
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/13-8247-6491.glb",
+     "sha256": "30b375f0da4125d172fe6b65e8b54437f85974cc0205876a3a3f25a2ee8f575d",
+     "bytes": 63548
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/11-2061-1623.glb",
+     "sha256": "c53e0045479d11e6850a7c12b97c45e41fbfe0648ced087104af31301d8b7b6a",
+     "bytes": 3752
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/12-4122-3246.glb",
+     "sha256": "af39c47748d5194d57f6509feaafa1599b3438bafbf110a3b8125860a52a0d33",
+     "bytes": 8320
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/13-8244-6492.glb",
+     "sha256": "3b958d16ab88714b1e1f51d531b567a88cd9c351d74b0e2c852fffe0902e76a3",
+     "bytes": 16120
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/13-8244-6493.glb",
+     "sha256": "58c5d034b40cca5537244506e15d3103eef596db0cbb4d36ff4ef951000c10bc",
+     "bytes": 5656
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/13-8245-6492.glb",
+     "sha256": "6676d015e37664d6731343845d8f06f03a660966ea0150be3c7db1d2eb9ce553",
+     "bytes": 32592
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/13-8245-6493.glb",
+     "sha256": "ff396499308581f2c6095bcf95e36a6510bc9c4ba1dcdc618f0549a45b62cd78",
+     "bytes": 13828
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/12-4122-3247.glb",
+     "sha256": "bc5bc1de2297d99094f77a6adb62abd6d84e1d4d9f4e7869699c250d61dfebea",
+     "bytes": 16476
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/12-4123-3246.glb",
+     "sha256": "b887573837bf7f99232bc24f746a2fa07c17fbf4c603331792c94ebb09f17921",
+     "bytes": 9232
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/13-8246-6492.glb",
+     "sha256": "f3d428297c6c3f7ce0a677f877408c010f9b1835852dbaa58f90306fe086d01e",
+     "bytes": 26516
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/13-8246-6493.glb",
+     "sha256": "79ffc14df5c1c8238eeb9f98faa5abdd42774f0aad727d8cb3e3067c925647eb",
+     "bytes": 43140
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/13-8247-6492.glb",
+     "sha256": "a6bbce55640addfbdd595061de5cad5634030cd0222653d529b625e785755b24",
+     "bytes": 28188
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/13-8247-6493.glb",
+     "sha256": "04a3ff1ebc6e95737e82f8e4e174b7a89a9053a7378815b70437fd439b8483d3",
+     "bytes": 37068
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/12-4123-3247.glb",
+     "sha256": "722e388e5db84024dcf3812eb3f4a556adba1aa78c3151535b34a6b64ce93ee4",
+     "bytes": 29424
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/10-1031-808.glb",
+     "sha256": "e57f776cc1151a2a8552172d2c6a4fccaabbf796365226e39dc32223c0e62e7c",
+     "bytes": 1916
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/11-2062-1616.glb",
+     "sha256": "62bfc534ba9c6ebefc1496fc1140f4512680b85a70c92a8653e39e6024be7c18",
+     "bytes": 6476
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/12-4124-3232.glb",
+     "sha256": "d223756538035c781e1830e1bfae03b11adb3a7f1b425af869b030ddb8eeaff4",
+     "bytes": 6424
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/13-8248-6464.glb",
+     "sha256": "80979912d3a3617825be27f385e8abae0a8c0f3f541f235bf06c6c9f7fde94dd",
+     "bytes": 7212
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/13-8248-6465.glb",
+     "sha256": "f232a3dd12bc3710565616edd5b0970bb2509e8c3cdec7cd9b1f55bed74ed2dd",
+     "bytes": 48264
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/13-8249-6464.glb",
+     "sha256": "74f84fe1e8b3b3b9721a5521cb3cbf6a905dee986f7d3fff9acbca85420c7e16",
+     "bytes": 3972
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/13-8249-6465.glb",
+     "sha256": "b75bd3f932c5ac76b00b9c9966f9a0eed693340f7b70c213fd4250e6a524c8c8",
+     "bytes": 41976
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/12-4124-3233.glb",
+     "sha256": "6ef9233e7a866d717aa6399657aa233947bf535d16c7280ad139cfea3d98166c",
+     "bytes": 36616
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/12-4125-3232.glb",
+     "sha256": "c18128c1ae9bb51c8a9453abea46a07954db54fec271ad7000b4a033f9228f29",
+     "bytes": 8572
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/13-8250-6464.glb",
+     "sha256": "ba8020032e909e62d9f008490b57c8839fa796a2877859be928bb1d2578dce9a",
+     "bytes": 5756
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/13-8250-6465.glb",
+     "sha256": "f61013428111651d1419d071bd7ff0d415b0fbec570b8fb0094ccdb826e5ba6d",
+     "bytes": 43420
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/13-8251-6464.glb",
+     "sha256": "f2361fa44150f86410bd4ce9ec1d673305123521414e551462df3ca1662d7b9f",
+     "bytes": 10072
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/13-8251-6465.glb",
+     "sha256": "bef3fb7257f94aee96fe8487b47c626393459c7346f36c3c4b6ef6401f31271e",
+     "bytes": 8412
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/12-4125-3233.glb",
+     "sha256": "9edfd64a67d53d4736ac31a100ceb70f536db82437264ed2fd14cc5850c2ee23",
+     "bytes": 7720
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/13-8250-6466.glb",
+     "sha256": "47613e65678f0b2be7b715f90b53b2821129e93bd3f939b4e502d1ad4c549779",
+     "bytes": 17280
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/13-8250-6467.glb",
+     "sha256": "6f73c55bab4899376ec81f61f889ef254b97ab4f9ca2f7ebd1d15e5ebd3a2579",
+     "bytes": 9836
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/13-8251-6466.glb",
+     "sha256": "c5587aec7b09cf1ffc0dce32102d4af5bf1c8910030120b4a1eb8a12302cc7eb",
+     "bytes": 60416
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/13-8251-6467.glb",
+     "sha256": "96b799244cf91af07b9d4a102151efebb09b7eafe7f33ae6c8d9e994a9c6c411",
+     "bytes": 24848
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/11-2062-1617.glb",
+     "sha256": "d73cda9ea3a19669de028c215da23fc5bfaf2f50a0aa951ab4d78ebe5eb4182e",
+     "bytes": 3388
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/12-4124-3234.glb",
+     "sha256": "4670aa8e466a6a2506470c40a1222653adbca503a6d834f337b1ebce0ac661a8",
+     "bytes": 17224
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/12-4124-3235.glb",
+     "sha256": "41f179279ea7fcb6ef664a15932de75d789429352a22a336d5729b8e320cc4cb",
+     "bytes": 12748
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/12-4125-3234.glb",
+     "sha256": "212974134a1e5776bfe7d01359a5a96ec7bf4143e555bef7302fa9a98ecda7e8",
+     "bytes": 20352
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/12-4125-3235.glb",
+     "sha256": "1299e13d706f2df8eaeac02b12b7d7956d5d01af3bbf0bc7e75f0e3e1d9f4171",
+     "bytes": 21744
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/11-2063-1616.glb",
+     "sha256": "38c6b38d033e8a2b28486e8402a1ce1df9721059ec39482b32eb3886272bf463",
+     "bytes": 2124
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/12-4126-3232.glb",
+     "sha256": "886815f83b8830fadd8539bcc997d164f4f6f1824900bf2d8ec51dc4915aee89",
+     "bytes": 13056
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/12-4126-3233.glb",
+     "sha256": "b1ceb1aa96ae98c8ab3cfeb51a7c61502f25c55fbd6f1199f53b48cc643b1084",
+     "bytes": 3248
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/13-8252-6466.glb",
+     "sha256": "4ca77c1a843d3173fc4873b79904d28471d1295a0ad9d4f4fab2a087934e2c30",
+     "bytes": 16624
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/13-8252-6467.glb",
+     "sha256": "3db5bb78480631d630f4cc16b73d2f2c075caed9f0f7552d1a4b00ec23e1e886",
+     "bytes": 32908
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/13-8253-6466.glb",
+     "sha256": "cf80352e854096919afe25b9703f6962765cfeccd854b678045eb9e13d293316",
+     "bytes": 4492
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/13-8253-6467.glb",
+     "sha256": "0f8a31e361faffd1bbaf37d8fa0e103c98180c314d938d0bb81ef34c280e32ea",
+     "bytes": 14152
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/12-4127-3232.glb",
+     "sha256": "73f121b5696a1d32e1929538a7fa877a78908fe7e35a7cbfc57f36df4e10b76c",
+     "bytes": 11364
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/12-4127-3233.glb",
+     "sha256": "b73f305b18dc5f8ab7de8931481a76961fcda2c92ff1a89cdc86c944f76e3316",
+     "bytes": 24768
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/11-2063-1617.glb",
+     "sha256": "76285d47cd3768f58ece92d1d10831c27f3e3e2fd837e8bc58b79dde8d451f3d",
+     "bytes": 3360
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/12-4126-3234.glb",
+     "sha256": "67f7ce7d5f4d4200f0d84afb3b1c2aaa5fdb75e453970751fac6e8e390522b7d",
+     "bytes": 25620
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/12-4126-3235.glb",
+     "sha256": "69e5376c631356a6672b90925cb17ba5bb198b335f1e765ba70cd46c53f388ba",
+     "bytes": 18984
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/12-4127-3234.glb",
+     "sha256": "0703381b6b0bd57476a2a640f41db6982a72d60ba6a02177086086c845019ecd",
+     "bytes": 29192
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/12-4127-3235.glb",
+     "sha256": "6144189dbf65490b04819a997ffa1b9f3037b1bb745f33fdc86ee82151b008a3",
+     "bytes": 21080
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/10-1031-809.glb",
+     "sha256": "b73ddce00bf2647ed5b93be3990c358dab9831f33439b39e54f7f7900032ff07",
+     "bytes": 1876
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/11-2062-1618.glb",
+     "sha256": "2660777d254981bd5108a4012eec6466cb730f6594496f641fda2dae4acffb5f",
+     "bytes": 2060
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/12-4124-3236.glb",
+     "sha256": "8922289e1c4d019d016978698de8fe762847101e819988211fbefe1809e1f3b5",
+     "bytes": 16800
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/12-4124-3237.glb",
+     "sha256": "abfe3a55da9888d1f7cb7d6d80b190b073f8fb030ba741b964178ba0f6172ee6",
+     "bytes": 23024
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/12-4125-3236.glb",
+     "sha256": "bf73e3ffb24c74709278172ce057aa8fdd542f12b7bb0452914b7b78169af036",
+     "bytes": 13560
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/12-4125-3237.glb",
+     "sha256": "ee63a0b03c3c6433c93fbc60995f078bdc6cd34fe9d9498b777777310b202e44",
+     "bytes": 13728
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/11-2062-1619.glb",
+     "sha256": "1a17f09b1e11077e38419c5f308df5b55cc1a4ecb8fbeea26fdb1ac1200e39b7",
+     "bytes": 2116
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/12-4124-3238.glb",
+     "sha256": "fd12d7c7f31cb7acf00d167377c6e1634e48d413a471607fcb047d13c0d3f0c8",
+     "bytes": 26724
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/12-4124-3239.glb",
+     "sha256": "36f758fccc3712b633462d8e2c508813cfeecb45ddd40401133c34f4bb24d1a0",
+     "bytes": 18728
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/12-4125-3238.glb",
+     "sha256": "1facd945d2912a1f4bcc3827144ae7c827a34e86e53e818c94fb79b37526f96e",
+     "bytes": 18508
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/12-4125-3239.glb",
+     "sha256": "83d6bb87830b361178b282f92dac647dfe50e351f1cfa8c8990c3322d445cb38",
+     "bytes": 23076
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/11-2063-1618.glb",
+     "sha256": "5ea45cefd7e6bf0c5123ab4d7a61cf04851df0744d2bdb7ab3be6f587cf3a25c",
+     "bytes": 2124
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/12-4126-3236.glb",
+     "sha256": "8c880f67abce0f6f1be4e28e20fca41692f1b255444b111ff7f3c02a284b58ec",
+     "bytes": 65592
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/12-4126-3237.glb",
+     "sha256": "f454223916a8a6fa419a9387d9a6c4b14621e4b0664cb97ada25fd8e551eef6d",
+     "bytes": 18304
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/12-4127-3236.glb",
+     "sha256": "80105c0e5fe651e3c4b2622a865dc9ac72fd7c65008cfddb444371b55ca9fb16",
+     "bytes": 16308
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/12-4127-3237.glb",
+     "sha256": "4460b41fca5762acd3a63cfaa596c973dac9be60fa17710020fdb3dfb671b9b0",
+     "bytes": 15096
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/11-2063-1619.glb",
+     "sha256": "50d87b4ef1591a396654bb5b927907248ab1c5f972454a84f6ffc5c55c5dd95a",
+     "bytes": 2140
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/12-4126-3238.glb",
+     "sha256": "cb7547819ead729551c6bab41a9ba0fe6e757fa3eabeaef5e36b290159aa7a7f",
+     "bytes": 17812
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/12-4126-3239.glb",
+     "sha256": "a3a98673bab77f47b8f3496add62cf1aee3032b93fa3e8f3592bde5a7a121679",
+     "bytes": 18220
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/12-4127-3238.glb",
+     "sha256": "3db28fae85e40c0086c550743556a1a9e0da5724593d490b63c52fd96e550d29",
+     "bytes": 24300
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/12-4127-3239.glb",
+     "sha256": "a6eeb69905428bec78fae62b61d481250f1b8c906b88c3fbe7fd3802441c8cb5",
+     "bytes": 18216
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/10-1031-810.glb",
+     "sha256": "335430eacfb6e07bef512085e30f216dc752f848999f6c1a9ff430b053939a2e",
+     "bytes": 3192
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/11-2062-1620.glb",
+     "sha256": "038e63959cf34ef6a8a79656bc5dacfaa6b0bf014ea920cdfa70c2598d5db7e9",
+     "bytes": 5500
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/12-4124-3240.glb",
+     "sha256": "c0136aafc8b9918d5adaef373d5f2808da0fef1456ac871c2bf9654dbad68426",
+     "bytes": 22132
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/12-4124-3241.glb",
+     "sha256": "eb6570cd7e145adddfc4e3f4d8c6090625762e82346d49e66d568e56bb175f83",
+     "bytes": 14832
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/12-4125-3240.glb",
+     "sha256": "92b6375b8ad814d59d166ca34b1339f62c3c3d0be06ed1c6072d7b59094cd242",
+     "bytes": 4724
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/13-8250-6480.glb",
+     "sha256": "0cd05d5fab4ab5d507679025bcb0f3c7ae7a31ca9483bfef0f3fd64274437bc8",
+     "bytes": 17036
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/13-8250-6481.glb",
+     "sha256": "4c5431dc42ca040613b240eb9f61cd2f5677fbdc5e36e44a04e24320d5660d34",
+     "bytes": 8584
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/13-8251-6480.glb",
+     "sha256": "c051dbbe6670cb2e8f1f321b233493f4530231684e48cee9668014ea16b7c609",
+     "bytes": 29536
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/13-8251-6481.glb",
+     "sha256": "2ba083d61628e2c66b351315b16fde57d79f1b86fbfa05e02e639364b3432f7a",
+     "bytes": 11432
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/12-4125-3241.glb",
+     "sha256": "a0733c733a8bbe511895192f04ccdea80f6b2f7c2d8d99d7c4d7abbbecd2a986",
+     "bytes": 14504
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/11-2062-1621.glb",
+     "sha256": "268558b5029ee9ec09a11f7e74436aa6be126200fcc195d4f258145344ab0a51",
+     "bytes": 3528
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/12-4124-3242.glb",
+     "sha256": "5cb2eea8b4acb4bae9e6f683c5a1039505ac53b2dbcbf0b565b058618fa5731a",
+     "bytes": 37576
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/12-4124-3243.glb",
+     "sha256": "821a8997857c47531fdcb4de27b7cb5284e023fde15c2552c299ff7d9efd337e",
+     "bytes": 2920
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/13-8248-6486.glb",
+     "sha256": "d59461343ec909426f5b98ef49e4df1fbb66ebb6cb283fac62bbd2e6c19abd05",
+     "bytes": 12616
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/13-8248-6487.glb",
+     "sha256": "bfb8857b7890419badab053ac6201dcc8c0bd04c0f82a9417e0fe16ca0c3cf4a",
+     "bytes": 14368
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/13-8249-6486.glb",
+     "sha256": "e2cf4a633457b3ac9b2229577c925f574c5b7a7c591f8bfb47470a2ae1db3a91",
+     "bytes": 9808
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/13-8249-6487.glb",
+     "sha256": "74adf453a63950b91d9a4498024b49b38829f1ff3edd7a5fbd8516d36c8b0dbd",
+     "bytes": 15900
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/12-4125-3242.glb",
+     "sha256": "c1de8b699ae9ac3dc5263ab6e784d6bf91ad12acc9f041aea51fc228c2920ac4",
+     "bytes": 23944
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/12-4125-3243.glb",
+     "sha256": "df2efa29d093e162f21533e821a007cc59628d74f8efb7dfb809cef72c6bca82",
+     "bytes": 23152
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/11-2063-1620.glb",
+     "sha256": "f5e91b42c7edfec2b294da3363e2e18527cb2c99ceb1400912a1855ba0cfdf2c",
+     "bytes": 2000
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/12-4126-3240.glb",
+     "sha256": "b360158d8b11deefd546b5d2d799df75e3290212e036b16b8391715fd19be865",
+     "bytes": 22256
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/12-4126-3241.glb",
+     "sha256": "9abeb8f4b98411f09f8014e5aadd4c0973d1a1710766a6fed899041a6ab2d1fd",
+     "bytes": 23968
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/12-4127-3240.glb",
+     "sha256": "01fbb962e934da1e62f22727c90cbf034200815d51afda3fa407eefd69ab2654",
+     "bytes": 20984
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/12-4127-3241.glb",
+     "sha256": "7acb538ad902666208c7842732dcafaf06afa01040d6c0c16a2d9b1b8f195701",
+     "bytes": 14896
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/11-2063-1621.glb",
+     "sha256": "abbf5a085e822207bf32ea84cd17917189e4565c49fcdb0f3f3c9f1c868ac7b1",
+     "bytes": 1992
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/12-4126-3242.glb",
+     "sha256": "247f75604cc1e982676755aa454c2047c14191ee26e5b8f51e1fe7abab3fcaa6",
+     "bytes": 15456
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/12-4126-3243.glb",
+     "sha256": "1972d9f0a5e228b77bdc815649649d2c349a6c01545e495019d9f090beb8974c",
+     "bytes": 15592
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/12-4127-3242.glb",
+     "sha256": "5791df3aa4ab3c728c572ec64a4ddd4a5d92274f118a1314c110cd3981b31879",
+     "bytes": 20368
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/12-4127-3243.glb",
+     "sha256": "fc91febc21db851ba91fe675e10aefb5fe7d6cdf7f500dd31a7972cf79a0ff92",
+     "bytes": 26488
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/10-1031-811.glb",
+     "sha256": "5fbdd555ac4754f9dda9e93e3df14a8875cd04e9ebf16146b4bf891a47f9e676",
+     "bytes": 6508
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/11-2062-1622.glb",
+     "sha256": "86d47974e3223a23d06c29bc4548c7104af6fa350e5c69dde9fe1d8f2a652d3d",
+     "bytes": 14428
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/12-4124-3244.glb",
+     "sha256": "c8bc7d3d35e9e34d5e6fc2df2cc71887a01277425a4f6f4e4816f7706cc8a4c2",
+     "bytes": 36096
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/12-4124-3245.glb",
+     "sha256": "42ce7696063467d8583813b08cbb26054ef05ad58faa56d5e2c8f55744202ed6",
+     "bytes": 20064
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/13-8248-6490.glb",
+     "sha256": "b74babdebcef01b3750bf0be638e34e93574feb5971b3279096edaa93a1adb3f",
+     "bytes": 82844
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/13-8248-6491.glb",
+     "sha256": "60965b000d7f281c94b37c41c46da1afee0a39ccf086937b19d7824d4b927b2d",
+     "bytes": 67288
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/13-8249-6490.glb",
+     "sha256": "7ee781a3e6ed42d880e390ba2899c8de5af3ce0b0d193fa8e2c66742fa627494",
+     "bytes": 67276
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/13-8249-6491.glb",
+     "sha256": "0d4c90a601318ad5c863b8a84f6889dd8251fd57f8c895b8c372cac3c4a50334",
+     "bytes": 74164
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/12-4125-3244.glb",
+     "sha256": "726da3dccb462f6a424ebf7026e2cfd3bdbe8a535d3fdbb3233cfee1b9f2cc1f",
+     "bytes": 35136
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/12-4125-3245.glb",
+     "sha256": "eb087ac6ab12605e4a3e84e9993d2d91d404da8e9364b60775d3a1b11422b377",
+     "bytes": 44056
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/13-8250-6490.glb",
+     "sha256": "2996514c0246859c472a3de270e39098c25cdbad8cd14b290b50a7698d8f6a7c",
+     "bytes": 116740
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/13-8250-6491.glb",
+     "sha256": "e64ad710201f5a4d38daed4f037dabe179e65974463cf5c4e362cff43e4edea6",
+     "bytes": 275152
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/13-8251-6490.glb",
+     "sha256": "27af93486c12ab02fb23eab1e7d3c737a09e309a7cfb6f2f0a7ce11595a2cd99",
+     "bytes": 97964
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/13-8251-6491.glb",
+     "sha256": "c3dc366d02b38d45b111fd7e9f6e3bf9cd027219e02125cf53d5125ff03e0cb0",
+     "bytes": 175796
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/11-2062-1623.glb",
+     "sha256": "011708ef61abf6a687169a59f784c281eb843ebbd29b15ef93145146fb6b5618",
+     "bytes": 11600
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/12-4124-3246.glb",
+     "sha256": "444d5eac4a3ade88d1547c18fc93cacb3770097366a3d93f9a33c2823d2e06ed",
+     "bytes": 16008
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/13-8248-6492.glb",
+     "sha256": "088689d0d21f077cc8529eef21b17821f18eb5c885960555976485f502a663ba",
+     "bytes": 43028
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/13-8248-6493.glb",
+     "sha256": "6fdeb990b845ad34d9e6fd4fd0d2894f0225e6f22cbb7ad23620056397f93671",
+     "bytes": 12340
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/13-8249-6492.glb",
+     "sha256": "4b3cc1a389e9916c5738733e2424b022dfd746dffc60496a603d7b422cc2931d",
+     "bytes": 83088
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/13-8249-6493.glb",
+     "sha256": "3a63bdcbd374c24f7ca760904a36de73d036e89606203d1a0be60d1f312386d1",
+     "bytes": 17640
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/12-4124-3247.glb",
+     "sha256": "027517cbb7ce2e9802c64c3bacf8c18dc3b2bcb62dc6376006c612d35bd07054",
+     "bytes": 2796
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/13-8248-6494.glb",
+     "sha256": "b3ae6c9e0156b77c59b40b6205bed6cf40918212fbe14496ba86b39a84bf4b7f",
+     "bytes": 28476
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/13-8248-6495.glb",
+     "sha256": "84fb566b1423b7735bc2b9cdf0900187f81ee9c42b16ac3d01dbfb3390d946b3",
+     "bytes": 7764
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/13-8249-6494.glb",
+     "sha256": "40fb8be277b4368b9314e679af5a643326c6b54c550cb4f1428cbd282f3c7475",
+     "bytes": 4492
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/13-8249-6495.glb",
+     "sha256": "4e93cd82f2379d4c79569453d1a80227307992f1c36b018dc284c6ea9e5dba9e",
+     "bytes": 5488
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/12-4125-3246.glb",
+     "sha256": "04bd8d1b166bab6ec650e9dada41587d700f28ef51166843ba538a9539e4e7bf",
+     "bytes": 12060
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/13-8250-6492.glb",
+     "sha256": "46540d5f0b7cda8a29ec37858789bf494620cc6cdf5ca193f7e1637c5e04bec0",
+     "bytes": 87944
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/13-8250-6493.glb",
+     "sha256": "694e5bf3e3a2b5c30b1f73ef58d23366272f6fb69d2ef0954dba972922d66410",
+     "bytes": 17604
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/13-8251-6492.glb",
+     "sha256": "ec1663a8264199d696bf9df2ece8023b8bf06cb083b30da8eff7979068acbf37",
+     "bytes": 76544
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/13-8251-6493.glb",
+     "sha256": "1336376c8ef86c358cb3bdf0c266a012db876721d3f791293325d32ba93cd7f4",
+     "bytes": 13384
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/12-4125-3247.glb",
+     "sha256": "d1f682ef134507b3a090d06c76f4a5c61fa4a3da6cc83a2ff77493bfd9ce84b8",
+     "bytes": 31568
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/11-2063-1622.glb",
+     "sha256": "69c2bd6341d0ba723d0d3bb35faa9276bc662b1bff1816b9ab139896f2778a3b",
+     "bytes": 5424
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/12-4126-3244.glb",
+     "sha256": "3edc266a643cb80b05cf764a00a359c6584dd2be0469c284842e8d9958e9d42b",
+     "bytes": 5104
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/13-8252-6488.glb",
+     "sha256": "83d154b4322d765ad55e85e748ccff056a095f267561a6efaa3e9f5872eaba19",
+     "bytes": 19404
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/13-8252-6489.glb",
+     "sha256": "e11aa0cc3b82fd329fb37635421e52e91fd69a6a8179a163dbe29c12fe75a410",
+     "bytes": 9136
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/13-8253-6488.glb",
+     "sha256": "45e62f31c69808a57c569d5b9d9d3620fac779cc9d940ffc7956badc872b5a75",
+     "bytes": 28388
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/13-8253-6489.glb",
+     "sha256": "1a46f0efaa108c171e5b70d162bc779f096b7e38f8f7ad8a4d006eaaca0a8309",
+     "bytes": 7920
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/12-4126-3245.glb",
+     "sha256": "5c9fc771039c178a986d8115a674f234cd128b3a36d2d5efe88d57a2aa3378b3",
+     "bytes": 11748
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/13-8252-6490.glb",
+     "sha256": "aaa99f5dd69bb6c966bdbb2cbabcc30b016d6a4997c01167f2be44a16dfaf0c8",
+     "bytes": 14376
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/13-8252-6491.glb",
+     "sha256": "c27f4893ef70b99bb69ebc96f3941df0789fdeb14641a58361e138156cb11f44",
+     "bytes": 71548
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/13-8253-6490.glb",
+     "sha256": "6731d32300b06afdd97ebd590c36c0768a7b9f690c40b9e390090a5c5525aa55",
+     "bytes": 3908
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/13-8253-6491.glb",
+     "sha256": "4ef2bc9b9b34840c9d0032982a5360602a4dc8fdb12317583c4e2e524660f913",
+     "bytes": 59836
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/12-4127-3244.glb",
+     "sha256": "82a616422515827742457e9b45f749d511e4abf791ea1259c13e6533078807ba",
+     "bytes": 25780
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/12-4127-3245.glb",
+     "sha256": "bf2297cc71c37a90d18896bb1914e467a2b005357cc244c3e5fb7d9f5e09cdfe",
+     "bytes": 53852
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/11-2063-1623.glb",
+     "sha256": "ef53366db5e32efc9a4675e1d8b742ba292d181bc64bb42328acb48fea1cd59f",
+     "bytes": 6792
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/12-4126-3246.glb",
+     "sha256": "9e51ab1a31f13839beb4bc026c5e75e96d2ca6a1e24728051babb831dba0e148",
+     "bytes": 9552
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/13-8252-6492.glb",
+     "sha256": "24d552bb15944adb702d79078391fc83fe38be3a93daf537476c854a45c68884",
+     "bytes": 68172
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/13-8252-6493.glb",
+     "sha256": "e2d917ad89b30719d4b04662420e0ac670e33a1355ea137076ba12e7ef1a3d10",
+     "bytes": 17168
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/13-8253-6492.glb",
+     "sha256": "3429680ec3c07a8a4000fbafe2f4257cb690ed55e3cd6e9d000e9726de41f465",
+     "bytes": 22044
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/13-8253-6493.glb",
+     "sha256": "9fdbb44bd3379f5720278bc6ba0a4ce020b7f8e75938ef4dbce3622baa462eb7",
+     "bytes": 3720
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/12-4126-3247.glb",
+     "sha256": "518d479dce3a3adac883b0a02acb61b5cd3458538fabd1289ce918c4ca979661",
+     "bytes": 33200
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/12-4127-3246.glb",
+     "sha256": "2fc0ce959982758136f3306324556aec4ce19295769d2dfaac52f705912b4806",
+     "bytes": 5740
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/13-8254-6492.glb",
+     "sha256": "3679dd6e3bb4b4220e682f9bfced3e8aa2cf65be70dc8f63b6d279d8f4fa0420",
+     "bytes": 20464
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/13-8254-6493.glb",
+     "sha256": "402407996df55952ceee252473330d64936f16a0d5adaabdf53b3288d56d172b",
+     "bytes": 17448
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/13-8255-6492.glb",
+     "sha256": "7e1e2760325acc4aca4596ea1db041f9a5da8b710731890d313180cc3ba42bbe",
+     "bytes": 5564
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/13-8255-6493.glb",
+     "sha256": "3c52fa4a50bc1d70b4fe22823860cb65cdc6885a61839ac264959a00be849cdb",
+     "bytes": 7348
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tiles/12-4127-3247.glb",
+     "sha256": "bd45d4dc008cb0062b4a168056d18a7234b0c818d3b61d447491c19fb0a1ce34",
+     "bytes": 33992
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/tileset.json",
+     "sha256": "3373fb87d3f042398f996c186d34aa42c2db17c80fc41024b0d62a4fcd66933c",
+     "bytes": 202898
+    },
+    {
+     "path": "docklandia:data/cells/8-257-202/features.json",
+     "sha256": "08f48c097364ac3d6daf5bf670f7fec9bb82d219019f00a11e49d506decade9f",
+     "bytes": 112087
+    }
+   ],
+   "ms": 8893,
+   "at": "2026-11-25T14:23:40.980Z"
+  }
+ ],
+ "selection": {
+  "records": 470413,
+  "OSM buildings selected": 339288,
+  "height from Microsoft ML Buildings (ODbL-1.0) kept as ms": 203151,
+  "OSM buildings outside the boundary": 3408,
+  "ms buildings outside the boundary": 1683,
+  "ms buildings selected (no OSM building there)": 125982,
+  "ms buildings dropped (overlap an OSM building)": 52
+ },
+ "height_sources": {
+  "osm-height": 269,
+  "osm-levels": 20128,
+  "national": 0,
+  "ms": 194346,
+  "default-small": 11609,
+  "ghsl": 233246,
+  "default": 5672,
+  "levels-vs-national-2plus": 0,
+  "national-zero-floors": 0
+ },
+ "footprint_matches": {
+  "ms": {
+   "rows": 203151,
+   "matched": 197200,
+   "matched_osm_had_height": 2854
+  }
+ },
+ "tiers": {
+  "level 10": {
+   "tiles": 16,
+   "bytes": 72308,
+   "triangles": 5728,
+   "boxes": 17,
+   "outlines": 0,
+   "named": 0,
+   "merged": 382,
+   "merged_buildings": 649,
+   "building_boxes": 0,
+   "mass_boxes": 382,
+   "by_class": {
+    "osm": 24
+   },
+   "far_outlines": 7
+  },
+  "level 11": {
+   "tiles": 64,
+   "bytes": 477568,
+   "triangles": 123915,
+   "boxes": 118,
+   "outlines": 344,
+   "named": 3,
+   "merged": 4073,
+   "merged_buildings": 9100,
+   "building_boxes": 6796,
+   "mass_boxes": 4073,
+   "by_class": {
+    "osm": 3824,
+    "ms": 3479
+   },
+   "far_outlines": 42
+  },
+  "level 12": {
+   "tiles": 236,
+   "bytes": 4732032,
+   "triangles": 1809216,
+   "boxes": 373,
+   "outlines": 5851,
+   "named": 143,
+   "merged": 16955,
+   "merged_buildings": 51577,
+   "building_boxes": 145932,
+   "mass_boxes": 16955,
+   "by_class": {
+    "osm": 91242,
+    "ms": 61237
+   },
+   "far_outlines": 180
+  },
+  "level 13": {
+   "tiles": 184,
+   "bytes": 5739000,
+   "triangles": 2774782,
+   "boxes": 0,
+   "outlines": 5678,
+   "named": 707,
+   "merged": 0,
+   "merged_buildings": 0,
+   "building_boxes": 258536,
+   "mass_boxes": 0,
+   "by_class": {
+    "ms": 36691,
+    "osm": 228230
+   },
+   "far_outlines": 0
+  }
+ },
+ "blocks": {
+  "buildings": 423998,
+  "named": 853,
+  "by_class": {
+   "osm": 322600,
+   "ms": 101398
+  },
+  "leaf_boxes": "compact"
+ },
+ "block_geometry": {
+  "osm": {
+   "label": "OpenStreetMap (via Overture)",
+   "source": "osm",
+   "switch": null,
+   "selected": 339288,
+   "dropped_overlap_osm": null,
+   "drawn": 322600,
+   "heights": {
+    "ghsl": 199949,
+    "ms": 102852,
+    "osm-levels": 20128,
+    "default": 4481,
+    "default-small": 11609,
+    "osm-height": 269
+   }
+  },
+  "ms": {
+   "label": "Microsoft ML Buildings (via Overture)",
+   "source": "overture-ms-geometry",
+   "switch": "overture-ms-geometry",
+   "selected": 125982,
+   "dropped_overlap_osm": 52,
+   "drawn": 101398,
+   "heights": {
+    "ms": 91494,
+    "ghsl": 33297,
+    "default": 1191
+   }
+  }
+ },
+ "fault": "F55 (curation skill fault register): buildings with no height in OSM; counted, not patched per record"
+}
